@@ -1,24 +1,40 @@
 package com.e.booker.model.database
 
-import androidx.room.Database
-import androidx.room.DatabaseConfiguration
-import androidx.room.InvalidationTracker
-import androidx.room.RoomDatabase
+import android.content.Context
+import android.service.autofill.UserData
+import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteOpenHelper
 
 @Database(entities = arrayOf(UserEntity::class), version = 1)
-class UserDatabase: RoomDatabase() {
+abstract class UserDatabase: RoomDatabase() {
+
+    abstract fun userDao(): UserDao
 
 
-    override fun createOpenHelper(config: DatabaseConfiguration?): SupportSQLiteOpenHelper {
-        TODO("Not yet implemented")
-    }
+}
 
-    override fun createInvalidationTracker(): InvalidationTracker {
-        TODO("Not yet implemented")
-    }
+object DatabaseProvider{
+    val dbName: String = "users"
 
-    override fun clearAllTables() {
-        TODO("Not yet implemented")
+    @Volatile
+    private var userDatabase: UserDatabase? = null
+
+    fun getUserDatabase(context: Context): UserDatabase{
+        synchronized(this){
+            var instance = userDatabase
+
+            if(instance == null){
+                instance = Room.databaseBuilder(context.applicationContext,
+                        UserDatabase::class.java,
+                        dbName)
+                        .fallbackToDestructiveMigration()
+                        .build()
+
+                userDatabase = instance
+            }
+
+            return instance
+        }
+
     }
 }
