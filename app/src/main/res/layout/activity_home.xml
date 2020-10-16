@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.HomeActivity">
 
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:menu="@menu/app_bar_menu"
+        android:backgroundTint="#7221B8"
+        app:fabCradleMargin="5dp"
+        app:navigationIcon="@drawable/ic_menu"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/bottom_app_bar"
+        android:backgroundTint="#FFD600"
+        android:textColor="#FFF"
+        android:fontFamily="@font/sful"
+        android:textFontWeight="800"
+        android:textSize="18sp"
+        app:maxImageSize="35dp"
+        android:src="@drawable/ic_add"
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/todoIT"
+        android:icon="@drawable/ic_todo"
+        android:title="ToDo"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/book"
+        android:icon="@drawable/ic_book"
+        android:title="Search Books"
+        app:showAsAction="ifRoom"/>
+</menu>
