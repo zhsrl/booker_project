@@ -1,6 +1,7 @@
 package com.e.booker.view
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -10,13 +11,14 @@ import com.e.booker.R
 import com.e.booker.model.database.DatabaseProvider
 import com.e.booker.model.database.UserDatabase
 import com.e.booker.model.database.UserEntity
+import com.e.booker.utils.SaveDataSharedPreference
 import java.net.Inet4Address
 
 class LoginAcitivity : AppCompatActivity() {
 
     private lateinit var username: EditText
     private lateinit var password: EditText
-    private lateinit var signUpButton: Button
+    private lateinit var signInButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +26,14 @@ class LoginAcitivity : AppCompatActivity() {
 
         initAll()
 
-        signUpButton.setOnClickListener{
+        if(SaveDataSharedPreference.getLoggedStatus(applicationContext)){
+            val intent = Intent(applicationContext, HomeActivity::class.java)
+            startActivity(intent)
+        }else{
+            Toast.makeText(applicationContext, "Logged: false", Toast.LENGTH_SHORT).show()
+        }
+
+        signInButton.setOnClickListener{
             val usernameText = username.text.toString()
             val passwordText = password.text.toString()
 
@@ -42,6 +51,7 @@ class LoginAcitivity : AppCompatActivity() {
                                 Toast.makeText(applicationContext, "Invalid credentials!", Toast.LENGTH_SHORT).show()
                             })
                         }else{
+                            SaveDataSharedPreference.setLogged(applicationContext,true)
                             val name = userEntity.name
                             val intent = Intent(applicationContext, HomeActivity::class.java)
                             intent.putExtra("name", name)
@@ -58,6 +68,6 @@ class LoginAcitivity : AppCompatActivity() {
     fun initAll(){
         username = findViewById(R.id.sign_in_usernameET)
         password = findViewById(R.id.sign_in_passwordET)
-        signUpButton = findViewById(R.id.sign_in_btn)
+        signInButton = findViewById(R.id.sign_in_btn)
     }
 }

@@ -14,6 +14,7 @@ import com.e.booker.model.database.DatabaseProvider
 import com.e.booker.model.database.UserDao
 import com.e.booker.model.database.UserDatabase
 import com.e.booker.model.database.UserEntity
+import com.e.booker.utils.SaveDataSharedPreference
 
 class RegistrationActivity : AppCompatActivity() {
 
@@ -29,6 +30,14 @@ class RegistrationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_registration)
 
         initAll()
+
+        if(SaveDataSharedPreference.getLoggedStatus(applicationContext)){
+            val intent = Intent(applicationContext, HomeActivity::class.java)
+            startActivity(intent)
+        }else{
+            Toast.makeText(applicationContext, "Logged: false", Toast.LENGTH_SHORT).show()
+        }
+
         register.setOnClickListener{
             val userEntity = UserEntity()
 
