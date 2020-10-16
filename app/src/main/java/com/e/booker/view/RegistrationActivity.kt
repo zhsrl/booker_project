@@ -80,5 +80,6 @@ class RegistrationActivity : AppCompatActivity() {
         userName = findViewById(R.id.reg_usernameET)
         password = findViewById(R.id.reg_passwordET)
         register = findViewById(R.id.reg_btn)
+        haveAccount = findViewById(R.id.have_accountTV)
     }
 }
