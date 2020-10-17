@@ -12,12 +12,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:menu="@menu/app_bar_menu"
+        app:fabAnimationMode="slide"
         android:backgroundTint="#7221B8"
         app:fabCradleMargin="5dp"
         app:navigationIcon="@drawable/ic_menu"
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_anchor="@id/bottom_app_bar"

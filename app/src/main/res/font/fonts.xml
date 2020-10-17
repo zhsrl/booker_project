@@ -7,4 +7,12 @@
     <font
         android:font="@font/sful"
         android:fontStyle="normal"/>
+
+    <font
+        android:font="@font/sfcm"
+        android:fontStyle="normal"/>
+
+    <font
+        android:font="@font/sfcsm"
+        android:fontStyle="normal"/>
 </font-family>

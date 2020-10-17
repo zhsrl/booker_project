@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Booker">
-        <activity android:name=".view.HomeActivity"></activity>
+        <activity android:name=".view.BooksActivity"></activity>
+        <activity android:name=".view.HomeActivity" />
         <activity android:name=".view.LoginAcitivity" />
         <activity android:name=".view.RegistrationActivity" />
         <activity android:name=".view.MainActivity">

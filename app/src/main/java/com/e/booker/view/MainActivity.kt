@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var SPLASH_TIME_OUT: Long = 4000
+        var SPLASH_TIME_OUT: Long = 2000
 
 
         var handler = Handler()
