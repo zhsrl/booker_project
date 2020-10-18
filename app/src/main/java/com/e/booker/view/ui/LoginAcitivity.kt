@@ -1,7 +1,6 @@
-package com.e.booker.view
+package com.e.booker.view.ui
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -9,10 +8,8 @@ import android.widget.EditText
 import android.widget.Toast
 import com.e.booker.R
 import com.e.booker.model.database.DatabaseProvider
-import com.e.booker.model.database.UserDatabase
 import com.e.booker.model.database.UserEntity
 import com.e.booker.utils.SaveDataSharedPreference
-import java.net.Inet4Address
 
 class LoginAcitivity : AppCompatActivity() {
 

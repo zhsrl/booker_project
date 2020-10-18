@@ -1,10 +1,9 @@
-package com.e.booker.view
+package com.e.booker.view.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import androidx.core.os.HandlerCompat.postDelayed
 import com.e.booker.R
 
 class MainActivity : AppCompatActivity() {

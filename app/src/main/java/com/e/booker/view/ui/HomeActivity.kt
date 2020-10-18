@@ -1,15 +1,11 @@
-package com.e.booker.view
+package com.e.booker.view.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ActionMenuView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.view.menu.ActionMenuItemView
 import com.e.booker.R
-import com.google.android.material.bottomappbar.BottomAppBar
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
 
 class HomeActivity : AppCompatActivity() {
 
@@ -28,7 +24,7 @@ class HomeActivity : AppCompatActivity() {
 
         books.setOnClickListener{
             Toast.makeText(applicationContext, "BOOKS", Toast.LENGTH_SHORT).show()
-            val intent = Intent(applicationContext, BooksActivity::class.java)
+            val intent = Intent(applicationContext, SearchBooksActivity::class.java)
             startActivity(intent)
         }
 

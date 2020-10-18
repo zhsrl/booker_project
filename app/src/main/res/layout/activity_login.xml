@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#7221B8"
-    tools:context=".view.LoginAcitivity"
+    tools:context=".view.ui.LoginAcitivity"
     >
     <!--ADD tools:context=".ActivityName"-->
 
