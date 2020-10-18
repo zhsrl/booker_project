@@ -6,5 +6,12 @@ import com.google.gson.annotations.SerializedName
 class ImageLink(
     @SerializedName("thumbnail")
     @Expose
-    var thumbnail: String
-)
+    var thumbnail: String,
+
+    @SerializedName("id")
+    @Expose
+    var id: String
+){
+
+
+}

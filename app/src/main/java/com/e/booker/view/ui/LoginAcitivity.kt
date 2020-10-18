@@ -6,10 +6,13 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.e.booker.R
 import com.e.booker.model.database.DatabaseProvider
 import com.e.booker.model.database.UserEntity
 import com.e.booker.utils.SaveDataSharedPreference
+import com.e.booker.viewmodel.LoginViewModel
+import com.e.booker.viewmodel.ViewModelProviderFactory
 
 class LoginAcitivity : AppCompatActivity() {
 
@@ -17,10 +20,19 @@ class LoginAcitivity : AppCompatActivity() {
     private lateinit var password: EditText
     private lateinit var signInButton: Button
 
+    private lateinit var loginViewModel: LoginViewModel
+
+    var userEntity: UserEntity = UserEntity()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        //ViewModel
+        val viewModelProviderFactory = ViewModelProviderFactory(context = this)
+        loginViewModel = ViewModelProvider(this, viewModelProviderFactory).get(LoginViewModel::class.java)
+
+        //Initalization all elements
         initAll()
 
         if(SaveDataSharedPreference.getLoggedStatus(applicationContext)){
@@ -30,33 +42,17 @@ class LoginAcitivity : AppCompatActivity() {
             Toast.makeText(applicationContext, "Logged: false", Toast.LENGTH_SHORT).show()
         }
 
+        //Login Logic
         signInButton.setOnClickListener{
+
             val usernameText = username.text.toString()
             val passwordText = password.text.toString()
 
             if(usernameText.isEmpty() || passwordText.isEmpty()){
                 Toast.makeText(applicationContext, "Empty fields!", Toast.LENGTH_SHORT).show()
             }else{
-                val userDatabase = DatabaseProvider.getUserDatabase(applicationContext)
-                val userDao = userDatabase.userDao()
+                loginViewModel.loginUser(userEntity,username = usernameText,password = passwordText)
 
-                Thread(Runnable {
-                    kotlin.run {
-                        val userEntity: UserEntity = userDao.login(usernameText,passwordText)
-                        if(userEntity == null){
-                            runOnUiThread(Runnable {
-                                Toast.makeText(applicationContext, "Invalid credentials!", Toast.LENGTH_SHORT).show()
-                            })
-                        }else{
-                            SaveDataSharedPreference.setLogged(applicationContext,true)
-                            val name = userEntity.name
-                            val intent = Intent(applicationContext, HomeActivity::class.java)
-                            intent.putExtra("name", name)
-                            startActivity(intent)
-
-                        }
-                    }
-                }).start()
             }
         }
 

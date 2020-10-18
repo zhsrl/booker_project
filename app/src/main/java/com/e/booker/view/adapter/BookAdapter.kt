@@ -28,7 +28,7 @@ class BookAdapter(var context: Context,var itemList: List<Item?> ): RecyclerView
             initAll()
 
             Glide.with(view)
-                .load(item!!.volumeInfo.imageLinks.thumbnail)
+                .load(item?.volumeInfo!!.imageLinks.thumbnail)
                 .into(bookImage)
 
             bookTitle.text = item.volumeInfo.title
