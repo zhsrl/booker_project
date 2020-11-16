@@ -16,19 +16,5 @@
         android:font="@font/sfcsm"
         android:fontStyle="normal"/>
 
-    <font
-        android:font="@font/robotob"
-        android:fontStyle="normal"/>
 
-    <font
-        android:font="@font/robotobi"
-        android:fontStyle="italic"/>
-
-    <font
-        android:font="@font/robotobo"
-        android:fontStyle="normal"/>
-
-    <font
-        android:font="@font/robotoreg"
-        android:fontStyle="normal"/>
 </font-family>

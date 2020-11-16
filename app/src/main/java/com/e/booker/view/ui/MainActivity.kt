@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         handler.postDelayed(Runnable {
             kotlin.run {
-                val intent = Intent(applicationContext, RegistrationActivity::class.java)
+                val intent = Intent(applicationContext, LoginAcitivity::class.java)
                 startActivity(intent)
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right)
                 finish()

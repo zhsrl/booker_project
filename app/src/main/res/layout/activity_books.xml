@@ -33,7 +33,9 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/search_layout_dess"
+            >
 
             <EditText
                 android:id="@+id/search_bookET"
@@ -52,6 +54,7 @@
                 android:layout_height="55dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="25dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/search_button"
                 android:src="@drawable/ic_search"
                 />
@@ -61,10 +64,13 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/set_up_layout"
+            >
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/book_rec_view"
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

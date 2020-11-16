@@ -4,86 +4,98 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#7221B8"
-    tools:context=".view.ui.LoginAcitivity"
-    >
-    <!--ADD tools:context=".ActivityName"-->
+    android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/switch_languageTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/montserratb"
-        android:text="Booker."
-        android:textColor="#FFD600"
-        android:textSize="35sp"
+        android:fontFamily="@font/robotomed"
+        android:text="Қазақ тілі"
+        android:textColor="#B8B8B8"
+        android:layout_marginTop="20dp"
+        android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/booker_logoIV"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:src="@drawable/booker_logo"
+        android:layout_marginTop="90dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch_languageTV" />
+
     <LinearLayout
         android:orientation="vertical"
+        android:id="@+id/parent_container"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:background="@drawable/set_up_layout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:text="Кіру"
-            android:textAlignment="center"
-            android:fontFamily="@font/montserratb"
-            android:textColor="#7221B8"
-            android:textSize="33sp"
-
-            />
-
-
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/booker_logoIV">
 
         <EditText
-            android:id="@+id/sign_in_usernameET"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:hint="Логин"
-            android:background="#FFF"
-            android:fontFamily="@font/sful"
-            android:textSize="23dp"
-            android:padding="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
-            />
+            android:id="@+id/signInEmailET"
+            android:hint="Почта"
+            android:background="@drawable/palitra_design"
+            android:layout_width="320dp"
+            android:paddingStart="20dp"
+            android:singleLine="true"
+            android:layout_height="45dp"/>
 
         <EditText
-            android:id="@+id/sign_in_passwordET"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
+            android:id="@+id/signInPasswordET"
             android:hint="Құпия сөз"
-            android:background="#FFF"
-            android:fontFamily="@font/sful"
-            android:textSize="23dp"
-            android:padding="10dp"
-            android:layout_gravity="center"
-            />
+            android:layout_marginTop="10dp"
+            android:background="@drawable/palitra_design"
+            android:layout_width="320dp"
+            android:paddingStart="20dp"
+            android:singleLine="true"
+            android:layout_height="45dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signInBTN"
+            android:layout_marginTop="15dp"
+            android:layout_width="320dp"
+            app:cornerRadius="10dp"
+            android:backgroundTint="#1433FF"
+            android:text="Кіру"
+            android:textAllCaps="false"
+            android:layout_height="60dp"/>
 
 
-        <Button
-            android:id="@+id/sign_in_btn"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Логин"
-            android:fontFamily="@font/sful"
-            android:textSize="20dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/login_btn"
-            />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/hasNotAccoutTextNotUse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:fontFamily="@font/robotomed"
+        android:textColor="#B8B8B8"
+        android:text="Сіз тіркелмегенсіз бе?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parent_container" />
+
+    <TextView
+        android:id="@+id/signUpTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/robotoreg"
+        android:text="Тіркелу!"
+        android:textColor="#5118ff"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hasNotAccoutTextNotUse" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

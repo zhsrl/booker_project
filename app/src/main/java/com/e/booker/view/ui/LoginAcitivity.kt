@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.e.booker.R
@@ -16,9 +17,10 @@ import com.e.booker.viewmodel.ViewModelProviderFactory
 
 class LoginAcitivity : AppCompatActivity() {
 
-    private lateinit var username: EditText
+    private lateinit var email: EditText
     private lateinit var password: EditText
     private lateinit var signInButton: Button
+    private lateinit var signUp: TextView
 
     private lateinit var loginViewModel: LoginViewModel
 
@@ -34,18 +36,18 @@ class LoginAcitivity : AppCompatActivity() {
 
         //Initalization all elements
         initAll()
-
-        if(SaveDataSharedPreference.getLoggedStatus(applicationContext)){
-            val intent = Intent(applicationContext, HomeActivity::class.java)
-            startActivity(intent)
-        }else{
-            Toast.makeText(applicationContext, "Logged: false", Toast.LENGTH_SHORT).show()
-        }
+//
+//        if(SaveDataSharedPreference.getLoggedStatus(applicationContext)){
+//            val intent = Intent(applicationContext, HomeActivity::class.java)
+//            startActivity(intent)
+//        }else{
+//            Toast.makeText(applicationContext, "Logged: false", Toast.LENGTH_SHORT).show()
+//        }
 
         //Login Logic
         signInButton.setOnClickListener{
 
-            val usernameText = username.text.toString()
+            val usernameText = email.text.toString()
             val passwordText = password.text.toString()
 
             if(usernameText.isEmpty() || passwordText.isEmpty()){
@@ -56,11 +58,18 @@ class LoginAcitivity : AppCompatActivity() {
             }
         }
 
+        signUp.setOnClickListener {
+            val intent = Intent(applicationContext,RegistrationActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
     }
 
     fun initAll(){
-        username = findViewById(R.id.sign_in_usernameET)
-        password = findViewById(R.id.sign_in_passwordET)
-        signInButton = findViewById(R.id.sign_in_btn)
+        email = findViewById(R.id.signInEmailET)
+        password = findViewById(R.id.signInPasswordET)
+        signInButton = findViewById(R.id.signInBTN)
+        signUp = findViewById(R.id.signUpTV)
     }
 }

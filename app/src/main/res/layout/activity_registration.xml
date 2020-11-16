@@ -4,106 +4,121 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#7221B8"
-    tools:context=".view.ui.RegistrationActivity"
-    >
-    <!--ADD tools:context=".ActivityName"-->
+    android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/signUpSwitchLangTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/montserratb"
-        android:text="Booker."
-        android:textColor="#FFD600"
-        android:textSize="35sp"
+        android:fontFamily="@font/robotomed"
+        android:text="Қазақ тілі"
+        android:textColor="#B8B8B8"
+        android:layout_marginTop="20dp"
+        android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/signUpNotUseText"
+        android:text="Тіркелу"
+        android:textColor="#1433FF"
+        android:textSize="40sp"
+        android:fontFamily="@font/robotobo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpSwitchLangTV" />
+
     <LinearLayout
         android:orientation="vertical"
+        android:id="@+id/parent_container"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:background="@drawable/set_up_layout"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/signUpNotUseText">
+
+        <EditText
+            android:id="@+id/signUpNameET"
+            android:hint="Атыңыз"
+            android:background="@drawable/palitra_design"
+            android:layout_width="320dp"
+            android:paddingStart="20dp"
+            android:singleLine="true"
+            android:layout_height="45dp"/>
+
+        <EditText
+            android:id="@+id/signUpEmailET"
+            android:hint="Почта"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/palitra_design"
+            android:layout_width="320dp"
+            android:paddingStart="20dp"
+            android:singleLine="true"
+            android:layout_height="45dp"/>
+
+        <EditText
+            android:id="@+id/signUpPasswordET"
+            android:hint="Құпия сөз"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/palitra_design"
+            android:layout_width="320dp"
+            android:paddingStart="20dp"
+            android:singleLine="true"
+            android:layout_height="45dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signUpBTN"
+            android:layout_marginTop="15dp"
+            android:layout_width="320dp"
+            app:cornerRadius="10dp"
+            android:backgroundTint="#1433FF"
+            android:text="Тіркелу"
+            android:textAllCaps="false"
+            android:layout_height="60dp"/>
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/hasAccoutTextNotUse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:fontFamily="@font/robotomed"
+        android:textColor="#B8B8B8"
+        android:text="Сіз тіркелгенсіз бе?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parent_container" />
+
+    <TextView
+        android:id="@+id/signInTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/robotoreg"
+        android:text="Кіру!"
+        android:textColor="#5118ff"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hasAccoutTextNotUse" />
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/signUpProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:text="Тіркелу"
-            android:textAlignment="center"
-            android:fontFamily="@font/montserratb"
-            android:textColor="#7221B8"
-            android:textSize="33sp"
 
-            />
 
-        <EditText
-            android:id="@+id/reg_nameET"
-            android:layout_marginTop="20dp"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:hint="Есіміңіз"
-            android:background="#FFF"
-            android:fontFamily="@font/sful"
-            android:textSize="23dp"
-            android:padding="10dp"
-            android:layout_gravity="center"
-            />
-
-        <EditText
-            android:id="@+id/reg_usernameET"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:hint="Логин"
-            android:background="#FFF"
-            android:fontFamily="@font/sful"
-            android:textSize="23dp"
-            android:padding="10dp"
-            android:layout_gravity="center"
-            />
-
-        <EditText
-            android:id="@+id/reg_passwordET"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:hint="Құпия сөз"
-            android:background="#FFF"
-            android:fontFamily="@font/sful"
-            android:textSize="23dp"
-            android:padding="10dp"
-            android:layout_gravity="center"
-            />
-
-        <Button
-            android:id="@+id/reg_btn"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Тіркеу"
-            android:fontFamily="@font/sful"
-            android:textSize="20dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/enter_btn"
-            android:layout_gravity="center"/>
-
-        <TextView
-            android:id="@+id/have_accountTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="150dp"
-            android:fontFamily="@font/sful"
-            android:textSize="20sp"
-            android:textColor="#FFAB00"
-            android:text="Менде аккаунт бар"
-
-            />
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
