@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.e.booker.R
 import com.e.booker.model.database.DatabaseProvider
@@ -35,14 +36,7 @@ class RegistrationActivity : AppCompatActivity() {
 
         initAll()
 
-//        //SharedPreference logic
-//        if(SaveDataSharedPreference.getLoggedStatus(applicationContext)){
-//            val intent = Intent(applicationContext, HomeActivity::class.java)
-//            startActivity(intent)
-//        }else{
-//            Toast.makeText(applicationContext, "Logged: false", Toast.LENGTH_SHORT).show()
-//        }
-
+        //Sign up logic
         signUp.setOnClickListener{
             val mName = name.editableText.toString()
             val mEmail = email.editableText.toString()
@@ -56,6 +50,19 @@ class RegistrationActivity : AppCompatActivity() {
             startActivity(intent)
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
         }
+
+        progressBar.visibility = View.GONE
+        registrationViewModel.liveData.observe(this, Observer {
+            result ->
+            when(result){
+                is RegistrationViewModel.State.HideLoading ->{
+                    progressBar.visibility = View.GONE
+                }
+                is RegistrationViewModel.State.ShowLoading ->{
+                    progressBar.visibility = View.VISIBLE
+                }
+            }
+        })
 
 
     }

@@ -6,6 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".view.ui.HomeActivity">
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/logOutBTN"
+        android:text="Log out"
+        android:backgroundTint="#EA0000"
+        android:layout_gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"/>
+
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"
         android:layout_width="match_parent"
