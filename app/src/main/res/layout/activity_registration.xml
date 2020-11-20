@@ -58,7 +58,9 @@
             android:layout_width="320dp"
             android:paddingStart="20dp"
             android:singleLine="true"
+            android:inputType="textEmailAddress"
             android:layout_height="45dp"/>
+
 
         <EditText
             android:id="@+id/signUpPasswordET"
@@ -68,7 +70,10 @@
             android:layout_width="320dp"
             android:paddingStart="20dp"
             android:singleLine="true"
+            android:inputType="textPassword"
+            android:password="true"
             android:layout_height="45dp"/>
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/signUpBTN"

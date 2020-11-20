@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:background="@color/purple_custom"
     android:layout_height="match_parent"
-    tools:context=".view.ui.SearchBooksActivity">
+    tools:context=".view.ui.activities.SearchBooksActivity">
 
     <TextView
         android:layout_width="wrap_content"

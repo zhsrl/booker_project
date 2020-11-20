@@ -1,4 +1,4 @@
-package com.e.booker.viewmodel
+package com.e.booker.viewmodel.activityviewmodel
 
 import android.content.Context
 import android.widget.Toast

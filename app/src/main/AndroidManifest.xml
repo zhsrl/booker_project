@@ -14,17 +14,18 @@
         android:theme="@style/Theme.Booker"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".view.ui.AdminPanelActivity"></activity>
-        <activity android:name=".view.ui.SearchBooksActivity" />
-        <activity android:name=".view.ui.HomeActivity" />
-        <activity android:name=".view.ui.LoginAcitivity">
+        <activity android:name=".view.ui.activities.TestActivity"></activity>
+        <activity android:name=".view.ui.activities.AdminPanelActivity" />
+        <activity android:name=".view.ui.activities.SearchBooksActivity" />
+        <activity android:name=".view.ui.activities.HomeActivity" />
+        <activity android:name=".view.ui.activities.LoginAcitivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.ui.RegistrationActivity" />
+        <activity android:name=".view.ui.activities.RegistrationActivity" />
     </application>
 
 </manifest>

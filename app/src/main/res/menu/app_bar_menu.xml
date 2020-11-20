@@ -2,14 +2,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/todoIT"
-        android:icon="@drawable/ic_todo"
-        android:title="ToDo"
-        app:showAsAction="ifRoom"/>
+        android:id="@+id/home_item"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_item"
+        android:title="Басты бет"
+       />
 
     <item
-        android:id="@+id/bookIT"
-        android:icon="@drawable/ic_book"
-        android:title="Search Books"
-        app:showAsAction="ifRoom"/>
+        android:id="@+id/audioBook_item"
+        android:enabled="true"
+        android:title="Аудио кітаптар"
+        android:icon="@drawable/ic_audiobook_item"/>
+
+    <item
+        android:id="@+id/book_item"
+        android:enabled="true"
+        android:icon="@drawable/ic_book_item"
+        android:title="Кітаптар"
+        />
+
+    <item
+        android:id="@+id/lastestRead_item"
+        android:enabled="true"
+        android:icon="@drawable/ic_latestbook_item"
+        android:title="Соңғы оқылған"
+        />
 </menu>

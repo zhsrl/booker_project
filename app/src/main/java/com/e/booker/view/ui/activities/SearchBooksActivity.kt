@@ -1,32 +1,22 @@
-package com.e.booker.view.ui
+package com.e.booker.view.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
 import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.Toast
-import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.e.booker.R
-import com.e.booker.model.api.ApiService
-import com.e.booker.model.pojo.Book
 import com.e.booker.model.pojo.Item
 import com.e.booker.view.adapter.BookAdapter
-import com.e.booker.viewmodel.SearchBookViewModel
+import com.e.booker.viewmodel.activityviewmodel.SearchBookViewModel
 import com.e.booker.viewmodel.ViewModelProviderFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
 import kotlin.coroutines.CoroutineContext
 
 class SearchBooksActivity() : AppCompatActivity(),CoroutineScope {

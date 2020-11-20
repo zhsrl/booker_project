@@ -44,6 +44,7 @@
             android:background="@drawable/palitra_design"
             android:layout_width="320dp"
             android:paddingStart="20dp"
+            android:inputType="textEmailAddress"
             android:singleLine="true"
             android:layout_height="45dp"/>
 
@@ -54,6 +55,7 @@
             android:background="@drawable/palitra_design"
             android:layout_width="320dp"
             android:paddingStart="20dp"
+            android:inputType="textPassword"
             android:singleLine="true"
             android:layout_height="45dp"/>
 

@@ -1,16 +1,14 @@
-package com.e.booker.view.ui
+package com.e.booker.view.ui.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
 import com.e.booker.R
-import com.e.booker.model.database.DatabaseProvider
-import com.e.booker.model.database.UserEntity
-import com.e.booker.utils.SaveDataSharedPreference
-import com.e.booker.viewmodel.LoginViewModel
+import com.e.booker.viewmodel.activityviewmodel.LoginViewModel
 import com.e.booker.viewmodel.ViewModelProviderFactory
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -59,7 +57,7 @@ class LoginAcitivity : AppCompatActivity() {
         })
 
         signUp.setOnClickListener {
-            val intent = Intent(applicationContext,RegistrationActivity::class.java)
+            val intent = Intent(applicationContext, RegistrationActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -78,6 +76,35 @@ class LoginAcitivity : AppCompatActivity() {
         super.onStart()
         val currentUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
         if(currentUser != null){
+            updateUI(currentUser)
+        }
+    }
+
+    private fun updateUI(user: FirebaseUser){
+        if(user != null){
+            if(user.uid == "sEy6rbovv0PrzPtoiK7Gq0fdTbI3"){
+                adminUpdateUI(user)
+                finish()
+            }else{
+                Log.e("HAPPY_SIGNED","Signed Successfully!")
+                val intent = Intent(applicationContext, HomeActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }else{
+            Toast.makeText(applicationContext,"You don't signed", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun adminUpdateUI(user: FirebaseUser){
+        if(user != null){
+            Log.e("HAPPY_ADMIN_PANEL","ADMIN PANEL ACTIVATED!")
+            Toast.makeText(applicationContext, "ADMIN PANEL ACTIVATED!", Toast.LENGTH_SHORT).show()
+            val intent = Intent(applicationContext, AdminPanelActivity::class.java)
+            startActivity(intent)
+            finish()
+        }else{
+            Toast.makeText(applicationContext,"You don't signed", Toast.LENGTH_SHORT).show()
         }
     }
 

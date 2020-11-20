@@ -1,4 +1,4 @@
-package com.e.booker.view.ui
+package com.e.booker.view.ui.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,12 +8,7 @@ import android.widget.*
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.e.booker.R
-import com.e.booker.model.database.DatabaseProvider
-import com.e.booker.model.database.UserDao
-import com.e.booker.model.database.UserDatabase
-import com.e.booker.model.database.UserEntity
-import com.e.booker.utils.SaveDataSharedPreference
-import com.e.booker.viewmodel.RegistrationViewModel
+import com.e.booker.viewmodel.activityviewmodel.RegistrationViewModel
 import com.e.booker.viewmodel.ViewModelProviderFactory
 
 class RegistrationActivity : AppCompatActivity() {
@@ -32,7 +27,8 @@ class RegistrationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_registration)
         //View Model
         val viewModelProviderFactory = ViewModelProviderFactory(context = this)
-        registrationViewModel = ViewModelProvider(this, viewModelProviderFactory).get(RegistrationViewModel::class.java)
+        registrationViewModel = ViewModelProvider(this, viewModelProviderFactory).get(
+            RegistrationViewModel::class.java)
 
         initAll()
 

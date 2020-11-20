@@ -15,4 +15,9 @@
         <item name="buttonStyle">@drawable/enter_btn</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">@font/robotomed</item>
+    </style>
 </resources>

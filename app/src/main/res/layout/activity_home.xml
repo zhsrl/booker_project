@@ -1,43 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ui.HomeActivity">
+    android:id="@+id/fragmentContainer"
+    tools:context=".view.ui.activities.HomeActivity">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/logOutBTN"
-        android:text="Log out"
-        android:backgroundTint="#EA0000"
-        android:layout_gravity="center"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"/>
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:outlineProvider="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/toolbar_menu"
+        app:titleTextAppearance="@style/Toolbar.TitleText" />
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottom_app_bar"
+    <View
+        android:background="#EFEFEF"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        />
+
+
+    <com.e.booker.utils.Pager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="645dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_bar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:menu="@menu/app_bar_menu"
-        app:fabAnimationMode="slide"
-        android:backgroundTint="#7221B8"
-        app:fabCradleMargin="5dp"
-        app:navigationIcon="@drawable/ic_menu"
-        />
+        app:itemIconTint="#1433FF"
+        app:itemTextColor="#1433FF"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/app_bar_menu" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_anchor="@id/bottom_app_bar"
-        android:backgroundTint="#FFD600"
-        android:textColor="#FFF"
-        android:fontFamily="@font/sful"
-        android:textFontWeight="800"
-        android:textSize="18sp"
-        app:maxImageSize="35dp"
-        android:src="@drawable/ic_add"
-        />
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/floatingActionBar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:backgroundTint="#1433FF"-->
+<!--        android:fontFamily="@font/sful"-->
+<!--        android:src="@drawable/ic_add_item"-->
+<!--        android:tint="#FFF"-->
+<!--        android:textColor="#1433FF"-->
+<!--        android:textFontWeight="800"-->
+<!--        android:textSize="18sp"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        app:layout_anchor="@id/bottom_app_bar"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/bottom_app_bar"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:maxImageSize="35dp" />-->
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout >
