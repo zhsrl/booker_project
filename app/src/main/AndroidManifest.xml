@@ -14,7 +14,8 @@
         android:theme="@style/Theme.Booker"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".view.ui.activities.TestActivity"></activity>
+        <activity android:name=".view.ui.activities.ProfileSettingsActivity"></activity>
+        <activity android:name=".view.ui.activities.TestActivity" />
         <activity android:name=".view.ui.activities.AdminPanelActivity" />
         <activity android:name=".view.ui.activities.SearchBooksActivity" />
         <activity android:name=".view.ui.activities.HomeActivity" />

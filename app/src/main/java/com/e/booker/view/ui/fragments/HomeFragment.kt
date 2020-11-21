@@ -63,22 +63,22 @@ class HomeFragment : Fragment() {
 
         getInf.inflate(R.menu.toolbar_menu, menu)
 
-        val profileMenuItem: MenuItem? = menu.findItem(R.id.profileITEM)
-        val view: View = MenuItemCompat.getActionView(profileMenuItem)
+//        val profileMenuItem: MenuItem? = menu.findItem(R.id.profileITEM)
+//        val view: View = MenuItemCompat.getActionView(profileMenuItem)
+//
+//        val profileImage: CircleImageView = view.findViewById(R.id.profileIMG)
+//
+//        Glide.with(context!!)
+//                .load(R.drawable.user)
+//                .into(profileImage)
 
-        val profileImage: CircleImageView = view.findViewById(R.id.profileIMG)
-
-        Glide.with(context!!)
-                .load(R.drawable.user)
-                .into(profileImage)
-
-        profileImage.setOnClickListener{
-            val profSettings = ProfileSettingsFragment()
-            val transaction = fragmentManager!!.beginTransaction()
-            transaction.replace(R.id.fragmentContainer, profSettings)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
+//        profileImage.setOnClickListener{
+//            val profSettings = ProfileSettingsFragment()
+//            val transaction = fragmentManager!!.beginTransaction()
+//            transaction.replace(R.id.fragmentContainer, profSettings)
+//            transaction.addToBackStack(null)
+//            transaction.commit()
+//        }
 
 
         super.onCreateOptionsMenu(menu, inflater)

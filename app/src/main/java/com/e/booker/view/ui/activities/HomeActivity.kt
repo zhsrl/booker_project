@@ -1,8 +1,14 @@
 package com.e.booker.view.ui.activities
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.KeyEvent
+import android.view.MenuItem
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.e.booker.R
@@ -17,11 +23,14 @@ import de.hdodenhof.circleimageview.CircleImageView
 class HomeActivity : AppCompatActivity() {
     private lateinit var bottomNavBar: BottomNavigationView
 
-    private lateinit var toolbar: MaterialToolbar
+    //Custom Toolbar elements
     private lateinit var profileImage: CircleImageView
+    private lateinit var toolbarTitle: TextView
+    private lateinit var toolbarSearch: ImageView
 
     private lateinit var pager: Pager
     private lateinit var pagerAdapter: ViewPageAdapter
+
     var homeFragment = HomeFragment()
     var readingFragment = ReadingFragment()
     var audioBookFragment = AudioBookFragment()
@@ -35,6 +44,8 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        init()
 
         bottomNavBar = findViewById(R.id.bottom_nav_bar)
 
@@ -53,57 +64,86 @@ class HomeActivity : AppCompatActivity() {
             .beginTransaction()
             .replace(R.id.fragmentContainer, HomeFragment())
             .commit()
+        toolbarTitle.text = "Басты бет"
 
-        toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        toolbar.setTitle("Басты бет")
 
-        profileImage = findViewById(R.id.profileIMG)
         Glide.with(applicationContext)
                 .load(R.drawable.user)
                 .into(profileImage)
 
-//        profileImage.setOnClickListener{
-//            val profSettings = ProfileSettingsFragment()
-//            val transaction = fragmentManager!!.beginTransaction()
-//            transaction.replace(R.id.fragmentContainer, Fragment())
+        profileImage.setOnClickListener{
+            val intent = Intent(applicationContext, ProfileSettingsActivity::class.java)
+            startActivity(intent)
+//            val profSettings: Fragment = ProfileSettingsFragment()
+//            val transaction = supportFragmentManager.beginTransaction()
+//            transaction.replace(R.id.fragmentContainer,profSettings)
 //            transaction.addToBackStack(null)
 //            transaction.commit()
-//        }
+        }
 
-        bottomNavBar.setOnNavigationItemSelectedListener{ item ->
-            var selectedFragment: Fragment? = null
-            when(item.itemId){
-                R.id.home_item -> {
-                    selectedFragment = HomeFragment()
-                    toolbar.title = "Басты бет"
-                }
-                R.id.lastestRead_item -> {
-                    selectedFragment = ReadingFragment()
-                    toolbar.title = "Соңғы оқылымдар"
-                }
-                R.id.audioBook_item -> {
-                    selectedFragment = AudioBookFragment()
-                    toolbar.title = "Аудио кітап"
-                }
-                R.id.book_item ->{
-                    selectedFragment = BookFragment()
-                    toolbar.title = "Кітап"
-                }
-
-            }
-
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer, selectedFragment!!)
-            transaction.addToBackStack(null)
-            transaction.commit()
-            return@setOnNavigationItemSelectedListener false
-
+        toolbarSearch.setOnClickListener{
+            Toast.makeText(applicationContext,"Coming soon can you search anything!",Toast.LENGTH_SHORT).show()
         }
 
 
+        bottomNavBar.setOnNavigationItemSelectedListener(object : BottomNavigationView.OnNavigationItemSelectedListener{
+            override fun onNavigationItemSelected(item: MenuItem): Boolean {
+                var selectedFragment: Fragment? = null
+                when(item.itemId){
+                    R.id.home_item -> {
+                        selectedFragment = HomeFragment()
+                        val transaction = supportFragmentManager.beginTransaction()
+                        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+                        transaction.replace(R.id.fragmentContainer, selectedFragment)
+                        transaction.addToBackStack  (null)
+                        transaction.commit()
+                        toolbarTitle.text = "Басты бет"
+                        item.setChecked(true)
+                    }
+                    R.id.lastestRead_item -> {
+                        selectedFragment = ReadingFragment()
+                        val transaction = supportFragmentManager.beginTransaction()
+                        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+                        transaction.replace(R.id.fragmentContainer, selectedFragment)
+                        transaction.addToBackStack  (null)
+                        transaction.commit()
+                        toolbarTitle.text = "Соңғы оқылым"
+                        item.setChecked(true)
+                    }
+                    R.id.audioBook_item -> {
+                        selectedFragment = AudioBookFragment()
+                        val transaction = supportFragmentManager.beginTransaction()
+                        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+                        transaction.replace(R.id.fragmentContainer, selectedFragment)
+                        transaction.addToBackStack  (null)
+                        transaction.commit()
+                        toolbarTitle.text = "Аудио кітап"
+                        item.setChecked(true)
+                    }
+                    R.id.book_item ->{
+                        selectedFragment = BookFragment()
+                        val transaction = supportFragmentManager.beginTransaction()
+                        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+                        transaction.replace(R.id.fragmentContainer, selectedFragment)
+                        transaction.addToBackStack  (null)
+                        transaction.commit()
+                        toolbarTitle.text = "Кітап"
+                        item.setChecked(true)
+                    }
+
+                }
+
+                return false
+            }
+        })
 
 
+
+    }
+
+    override fun onBackPressed() {
+
+//        super.onBackPressed()
     }
 
     override fun onStop() {
@@ -111,15 +151,11 @@ class HomeActivity : AppCompatActivity() {
         finish()
     }
 
-
-//    inner class SwipableViewPager(fm: FragmentManager): FragmentStatePagerAdapter(fm){
-//        override fun getCount(): Int {
-//            return 4
-//        }
-//
-//        override fun getItem(position: Int): Fragment = HomeFragment()
-//
-//    }
+    fun init(){
+        profileImage = findViewById(R.id.toolbarUserImageCIV)
+        toolbarTitle = findViewById(R.id.toolbarTitleTV)
+        toolbarSearch = findViewById(R.id.searchImageIV)
+    }
 
 
 }

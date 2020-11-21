@@ -20,4 +20,13 @@
         <item name="android:textSize">20sp</item>
         <item name="fontFamily">@font/robotomed</item>
     </style>
+    
+    <style name="BottomNavViewStyle" parent="">
+        <item name="colorPrimary">@color/mainColor</item>
+        <item name="colorOnSurface">@color/inactive</item>
+    </style>
+    
+    <style name="BottomNavigationViewStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="materialThemeOverlay">@style/BottomNavViewStyle</item>
+    </style>
 </resources>
