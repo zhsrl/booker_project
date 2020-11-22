@@ -62,7 +62,11 @@ class ProfileSettingsActivity : AppCompatActivity() {
             finish()
         }
 
-        profSettingsViewModel.showData(userName,userSurname)
+        profSettingsViewModel.showData(userName, userSurname, userEmail)
+
+        aboutBooker.setOnClickListener {
+            profSettingsViewModel.showAboutBooker()
+        }
 
 
     }
