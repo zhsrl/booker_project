@@ -4,7 +4,7 @@
     <item
         android:id="@+id/home_item"
         android:enabled="true"
-        android:icon="@drawable/ic_home_item"
+        android:icon="@drawable/ic_home"
         android:title="Басты бет"
        />
 
@@ -12,19 +12,19 @@
         android:id="@+id/audioBook_item"
         android:enabled="true"
         android:title="Аудио кітаптар"
-        android:icon="@drawable/ic_audiobook_item"/>
+        android:icon="@drawable/ic_audiobook"/>
 
     <item
         android:id="@+id/book_item"
         android:enabled="true"
-        android:icon="@drawable/ic_book_item"
+        android:icon="@drawable/ic_book"
         android:title="Кітаптар"
         />
 
     <item
         android:id="@+id/lastestRead_item"
         android:enabled="true"
-        android:icon="@drawable/ic_latestbook_item"
+        android:icon="@drawable/ic_latestbook"
         android:title="Соңғы оқылған"
         />
 </menu>

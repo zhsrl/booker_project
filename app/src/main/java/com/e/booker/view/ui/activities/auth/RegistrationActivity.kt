@@ -1,4 +1,4 @@
-package com.e.booker.view.ui.activities
+package com.e.booker.view.ui.activities.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +14,7 @@ import com.e.booker.viewmodel.ViewModelProviderFactory
 class RegistrationActivity : AppCompatActivity() {
 
     private lateinit var name: EditText
+    private lateinit var surname: EditText
     private lateinit var email: EditText
     private lateinit var password: EditText
     private lateinit var signUp: Button
@@ -34,10 +35,11 @@ class RegistrationActivity : AppCompatActivity() {
 
         //Sign up logic
         signUp.setOnClickListener{
-            val mName = name.editableText.toString()
-            val mEmail = email.editableText.toString()
-            val mPassword = password.editableText.toString()
-            registrationViewModel.signUpUser(mName, mEmail, mPassword)
+            val mName = name.editableText.toString().trim()
+            val mSurname = surname.editableText.toString().trim()
+            val mEmail = email.editableText.toString().trim()
+            val mPassword = password.editableText.toString().trim()
+            registrationViewModel.signUpUser(mName, mSurname, mEmail, mPassword)
         }
 
         //Have you account?
@@ -67,6 +69,7 @@ class RegistrationActivity : AppCompatActivity() {
     //Initalization elements
     fun initAll(){
         name = findViewById(R.id.signUpNameET)
+        surname = findViewById(R.id.signUpSurnameET)
         email = findViewById(R.id.signUpEmailET)
         password = findViewById(R.id.signUpPasswordET)
         signUp = findViewById(R.id.signUpBTN)

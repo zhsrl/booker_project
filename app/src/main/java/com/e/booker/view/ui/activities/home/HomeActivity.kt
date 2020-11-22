@@ -1,10 +1,9 @@
-package com.e.booker.view.ui.activities
+package com.e.booker.view.ui.activities.home
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.KeyEvent
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
@@ -15,9 +14,7 @@ import com.e.booker.R
 import com.e.booker.utils.Pager
 import com.e.booker.view.ui.fragments.*
 import com.e.progress.ViewPageAdapter
-import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import de.hdodenhof.circleimageview.CircleImageView
 
 class HomeActivity : AppCompatActivity() {
@@ -36,7 +33,6 @@ class HomeActivity : AppCompatActivity() {
     var audioBookFragment = AudioBookFragment()
     var bookFragment = BookFragment()
 
-    var profileSettingsFragment = ProfileSettingsFragment()
 
     var fragmentList: MutableList<Fragment> = ArrayList()
 
@@ -50,9 +46,6 @@ class HomeActivity : AppCompatActivity() {
         bottomNavBar = findViewById(R.id.bottom_nav_bar)
 
         fragmentList.add(homeFragment)
-
-        //Profile Settings Fragment
-        fragmentList.add(profileSettingsFragment)
 
         fragmentList.add(readingFragment)
         fragmentList.add(audioBookFragment)
@@ -74,11 +67,6 @@ class HomeActivity : AppCompatActivity() {
         profileImage.setOnClickListener{
             val intent = Intent(applicationContext, ProfileSettingsActivity::class.java)
             startActivity(intent)
-//            val profSettings: Fragment = ProfileSettingsFragment()
-//            val transaction = supportFragmentManager.beginTransaction()
-//            transaction.replace(R.id.fragmentContainer,profSettings)
-//            transaction.addToBackStack(null)
-//            transaction.commit()
         }
 
         toolbarSearch.setOnClickListener{
@@ -142,8 +130,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-
-//        super.onBackPressed()
+        super.onBackPressed()
+        finish()
     }
 
     override fun onStop() {

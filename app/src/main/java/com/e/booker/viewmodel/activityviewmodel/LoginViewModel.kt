@@ -6,9 +6,9 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.e.booker.view.ui.activities.AdminPanelActivity
-import com.e.booker.view.ui.activities.HomeActivity
-import com.e.booker.view.ui.activities.LoginAcitivity
+import com.e.booker.view.ui.activities.adminpanel.AdminPanelActivity
+import com.e.booker.view.ui.activities.home.HomeActivity
+import com.e.booker.view.ui.activities.auth.LoginAcitivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult

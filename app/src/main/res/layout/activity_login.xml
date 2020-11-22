@@ -41,7 +41,7 @@
         <EditText
             android:id="@+id/signInEmailET"
             android:hint="Почта"
-            android:background="@drawable/palitra_design"
+            android:background="@drawable/edittext_background"
             android:layout_width="320dp"
             android:paddingStart="20dp"
             android:inputType="textEmailAddress"
@@ -52,7 +52,7 @@
             android:id="@+id/signInPasswordET"
             android:hint="Құпия сөз"
             android:layout_marginTop="10dp"
-            android:background="@drawable/palitra_design"
+            android:background="@drawable/edittext_background"
             android:layout_width="320dp"
             android:paddingStart="20dp"
             android:inputType="textPassword"

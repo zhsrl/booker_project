@@ -13,7 +13,6 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">#FFF</item>
         <!-- Customize your theme here. -->
-        <item name="buttonStyle">@drawable/enter_btn</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

@@ -44,9 +44,19 @@
         <EditText
             android:id="@+id/signUpNameET"
             android:hint="Атыңыз"
-            android:background="@drawable/palitra_design"
+            android:background="@drawable/edittext_background"
             android:layout_width="320dp"
             android:paddingStart="20dp"
+            android:singleLine="true"
+            android:layout_height="45dp"/>
+
+        <EditText
+            android:id="@+id/signUpSurnameET"
+            android:hint="Тегіңіз"
+            android:background="@drawable/edittext_background"
+            android:layout_width="320dp"
+            android:paddingStart="20dp"
+            android:layout_marginTop="13dp"
             android:singleLine="true"
             android:layout_height="45dp"/>
 
@@ -54,7 +64,7 @@
             android:id="@+id/signUpEmailET"
             android:hint="Почта"
             android:layout_marginTop="13dp"
-            android:background="@drawable/palitra_design"
+            android:background="@drawable/edittext_background"
             android:layout_width="320dp"
             android:paddingStart="20dp"
             android:singleLine="true"
@@ -66,7 +76,7 @@
             android:id="@+id/signUpPasswordET"
             android:hint="Құпия сөз"
             android:layout_marginTop="13dp"
-            android:background="@drawable/palitra_design"
+            android:background="@drawable/edittext_background"
             android:layout_width="320dp"
             android:paddingStart="20dp"
             android:singleLine="true"
@@ -93,7 +103,7 @@
         android:id="@+id/hasAccoutTextNotUse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="110dp"
         android:fontFamily="@font/robotomed"
         android:textColor="#B8B8B8"
         android:text="Сіз тіркелгенсіз бе?"

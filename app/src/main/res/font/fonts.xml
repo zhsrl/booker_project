@@ -31,4 +31,8 @@
     <font
         android:font="@font/robotoreg"
         android:fontStyle="normal"/>
+
+    <font
+        android:font="@font/robotolight"
+        android:fontStyle="normal"/>
 </font-family>

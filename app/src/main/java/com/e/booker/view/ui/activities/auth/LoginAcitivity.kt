@@ -1,4 +1,4 @@
-package com.e.booker.view.ui.activities
+package com.e.booker.view.ui.activities.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
 import com.e.booker.R
+import com.e.booker.view.ui.activities.adminpanel.AdminPanelActivity
+import com.e.booker.view.ui.activities.home.HomeActivity
 import com.e.booker.viewmodel.activityviewmodel.LoginViewModel
 import com.e.booker.viewmodel.ViewModelProviderFactory
 import com.google.firebase.auth.FirebaseAuth

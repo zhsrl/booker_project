@@ -7,8 +7,8 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.e.booker.model.User
-import com.e.booker.view.ui.activities.LoginAcitivity
-import com.e.booker.view.ui.activities.RegistrationActivity
+import com.e.booker.view.ui.activities.auth.LoginAcitivity
+import com.e.booker.view.ui.activities.auth.RegistrationActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
@@ -24,14 +24,14 @@ class RegistrationViewModel(private val context: Context): ViewModel(){
     var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
     var mDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
 
-    fun signUpUser(name: String, email: String, password: String){
+    fun signUpUser(name: String, surname: String, email: String, password: String){
 
         liveData.value = State.ShowLoading
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(object : OnCompleteListener<AuthResult>{
                 override fun onComplete(p0: Task<AuthResult>) {
                     if (p0.isSuccessful){
-                        val user = User(name, email, password)
+                        val user = User(name, surname, email, password)
                         liveData.value = State.HideLoading
 
                         mDatabase.getReference("Users")

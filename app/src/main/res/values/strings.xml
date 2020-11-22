@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Booker</string>
+    <string name="testEmailString">test@test.com</string>
 </resources>

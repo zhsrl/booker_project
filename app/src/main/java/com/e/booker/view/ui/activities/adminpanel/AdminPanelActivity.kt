@@ -1,4 +1,4 @@
-package com.e.booker.view.ui.activities
+package com.e.booker.view.ui.activities.adminpanel
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
