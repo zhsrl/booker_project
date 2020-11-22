@@ -17,9 +17,12 @@ class BottomSheetDialog : BottomSheetDialogFragment(){
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.bottom_sheet_layout, null, false)
-
         return view
 
+    }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(STYLE_NORMAL, R.style.AppBottomSheetStyle)
     }
 }

@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.e.booker.R
+import com.e.booker.utils.BottomSheetDialog
 import com.e.booker.view.ui.activities.auth.LoginAcitivity
 import com.e.booker.viewmodel.ViewModelProviderFactory
 import com.e.booker.viewmodel.activityviewmodel.ProflieSettingsViewModel
@@ -25,6 +26,9 @@ class ProfileSettingsActivity : AppCompatActivity() {
     private lateinit var userName: TextView
     private lateinit var userSurname: TextView
     private lateinit var userEmail: TextView
+
+    //Bottom Dialog
+    private lateinit var bottomDialog: BottomSheetDialog
 
     //Help Buttons
     private lateinit var help: TextView
@@ -64,8 +68,10 @@ class ProfileSettingsActivity : AppCompatActivity() {
 
         profSettingsViewModel.showData(userName, userSurname, userEmail)
 
+        bottomDialog = BottomSheetDialog()
+
         aboutBooker.setOnClickListener {
-            profSettingsViewModel.showAboutBooker()
+            bottomDialog.show(supportFragmentManager, "TAG")
         }
 
 
