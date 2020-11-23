@@ -1,4 +1,4 @@
-package com.e.booker.utils
+package com.e.booker.view.ui.fragments.bottomsheet
 
 import android.annotation.SuppressLint
 import android.os.Bundle

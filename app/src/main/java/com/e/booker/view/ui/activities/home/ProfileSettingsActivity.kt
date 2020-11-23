@@ -7,13 +7,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.e.booker.R
-import com.e.booker.utils.BottomSheetDialog
+import com.e.booker.view.ui.fragments.bottomsheet.BottomSheetDialog
 import com.e.booker.view.ui.activities.auth.LoginAcitivity
+import com.e.booker.view.ui.fragments.bottomsheet.ChangePasswordBottomSheet
 import com.e.booker.viewmodel.ViewModelProviderFactory
 import com.e.booker.viewmodel.activityviewmodel.ProflieSettingsViewModel
 import com.google.firebase.auth.FirebaseAuth
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlin.math.log
 
 class ProfileSettingsActivity : AppCompatActivity() {
 
@@ -29,9 +29,11 @@ class ProfileSettingsActivity : AppCompatActivity() {
 
     //Bottom Dialog
     private lateinit var bottomDialog: BottomSheetDialog
+    private var changeBottomDialog: ChangePasswordBottomSheet = ChangePasswordBottomSheet()
 
     //Help Buttons
     private lateinit var help: TextView
+    private lateinit var changePassword: TextView
     private lateinit var aboutBooker: TextView
     private lateinit var logOut: TextView
 
@@ -74,6 +76,10 @@ class ProfileSettingsActivity : AppCompatActivity() {
             bottomDialog.show(supportFragmentManager, "TAG")
         }
 
+        changePassword.setOnClickListener {
+            changeBottomDialog.show(supportFragmentManager, "ChangePassword_TAG")
+        }
+
 
     }
 
@@ -95,6 +101,7 @@ class ProfileSettingsActivity : AppCompatActivity() {
         userEmail = findViewById(R.id.profSettingsEmail)
 
         help = findViewById(R.id.helpTV)
+        changePassword = findViewById(R.id.changePasswordTV)
         aboutBooker = findViewById(R.id.aboutBookerTV)
         logOut = findViewById(R.id.logOutTV)
     }

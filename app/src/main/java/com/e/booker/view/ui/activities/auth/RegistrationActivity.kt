@@ -39,7 +39,7 @@ class RegistrationActivity : AppCompatActivity() {
             val mSurname = surname.editableText.toString().trim()
             val mEmail = email.editableText.toString().trim()
             val mPassword = password.editableText.toString().trim()
-            registrationViewModel.signUpUser(mName, mSurname, mEmail, mPassword)
+            registrationViewModel.signUpUser(name = mName, surname = mSurname, email = mEmail, password = mPassword)
         }
 
         //Have you account?

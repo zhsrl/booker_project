@@ -31,7 +31,7 @@ class RegistrationViewModel(private val context: Context): ViewModel(){
             .addOnCompleteListener(object : OnCompleteListener<AuthResult>{
                 override fun onComplete(p0: Task<AuthResult>) {
                     if (p0.isSuccessful){
-                        val user = User(name, surname, email, password)
+                        val user = User(name = name, surname = surname, email = email, password = password)
                         liveData.value = State.HideLoading
 
                         mDatabase.getReference("Users")

@@ -62,7 +62,7 @@
         android:id="@+id/profChangeUserImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/user"
         android:layout_marginTop="30dp"
         android:layout_marginRight="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,15 +70,45 @@
         app:layout_constraintTop_toBottomOf="@id/view" />
 
     <ImageView
-        android:src="@drawable/ic_camera"
+        android:id="@+id/chooseUserImageIV"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:layout_marginTop="70dp"
         android:layout_marginRight="10dp"
+        android:src="@drawable/ic_camera"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view"
-        />
+        app:layout_constraintTop_toBottomOf="@id/view" />
+
+    <EditText
+        android:id="@+id/profChangeNameET"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:background="@drawable/edittext_background"
+        android:hint="Атыңыз"
+        android:layout_marginTop="15dp"
+        android:inputType="textPersonName"
+        android:paddingStart="20dp"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profChangeUserImage" />
+
+    <EditText
+        android:id="@+id/profChangeSurnameET"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:background="@drawable/edittext_background"
+        android:hint="Тегіңіз"
+        android:layout_marginTop="15dp"
+        android:inputType="textPersonName"
+        android:paddingStart="20dp"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profChangeNameET" />
+
+
 
 
 

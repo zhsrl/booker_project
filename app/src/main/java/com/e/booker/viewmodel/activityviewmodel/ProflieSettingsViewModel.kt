@@ -3,13 +3,21 @@ package com.e.booker.viewmodel.activityviewmodel
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.util.Log
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
+import com.e.booker.view.ui.activities.auth.LoginAcitivity
+import com.e.booker.view.ui.activities.home.ProfileChangeActivity
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthCredential
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import org.w3c.dom.Text
@@ -36,7 +44,6 @@ class ProflieSettingsViewModel(var context: Context) : ViewModel(){
                     surname.text = mSurname
                     email.text = mEmail
 
-
                 }
 
                 @SuppressLint("LongLogTag")
@@ -47,9 +54,5 @@ class ProflieSettingsViewModel(var context: Context) : ViewModel(){
         }
     }
 
-    fun showAboutBooker(){
-        MaterialDialog(context, BottomSheet(LayoutMode.WRAP_CONTENT)).show {
-            Toast.makeText(context, "Bottom Sheet", Toast.LENGTH_SHORT).show()
-        }
-    }
+
 }
