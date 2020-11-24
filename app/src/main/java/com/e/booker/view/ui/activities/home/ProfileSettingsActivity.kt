@@ -10,16 +10,17 @@ import com.e.booker.R
 import com.e.booker.view.ui.fragments.bottomsheet.BottomSheetDialog
 import com.e.booker.view.ui.activities.auth.LoginAcitivity
 import com.e.booker.view.ui.fragments.bottomsheet.ChangePasswordBottomSheet
+import com.e.booker.view.ui.fragments.bottomsheet.ProfileChangeBottomSheet
 import com.e.booker.viewmodel.ViewModelProviderFactory
 import com.e.booker.viewmodel.activityviewmodel.ProflieSettingsViewModel
 import com.google.firebase.auth.FirebaseAuth
 import de.hdodenhof.circleimageview.CircleImageView
+import org.w3c.dom.Text
 
 class ProfileSettingsActivity : AppCompatActivity() {
 
     //Toolbar elements
     private lateinit var goBack: ImageView
-    private lateinit var profileChange: ImageView
 
     //Main Page Elements
     private lateinit var userImage: CircleImageView
@@ -30,9 +31,11 @@ class ProfileSettingsActivity : AppCompatActivity() {
     //Bottom Dialog
     private lateinit var bottomDialog: BottomSheetDialog
     private var changeBottomDialog: ChangePasswordBottomSheet = ChangePasswordBottomSheet()
+    private var changeDataBottomDialog: ProfileChangeBottomSheet = ProfileChangeBottomSheet()
 
     //Help Buttons
     private lateinit var help: TextView
+    private lateinit var changeData: TextView
     private lateinit var changePassword: TextView
     private lateinit var aboutBooker: TextView
     private lateinit var logOut: TextView
@@ -55,12 +58,6 @@ class ProfileSettingsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-        profileChange.setOnClickListener{
-            val intent = Intent(applicationContext, ProfileChangeActivity::class.java)
-            startActivity(intent)
-        }
-
         logOut.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             val intent = Intent(applicationContext, LoginAcitivity::class.java)
@@ -68,17 +65,23 @@ class ProfileSettingsActivity : AppCompatActivity() {
             finish()
         }
 
-        profSettingsViewModel.showData(userName, userSurname, userEmail)
+        profSettingsViewModel.showData(userName, userSurname, userEmail, userImage)
 
         bottomDialog = BottomSheetDialog()
 
         aboutBooker.setOnClickListener {
-            bottomDialog.show(supportFragmentManager, "TAG")
+            bottomDialog.show(supportFragmentManager, "AboutBooker_TAG")
         }
 
         changePassword.setOnClickListener {
             changeBottomDialog.show(supportFragmentManager, "ChangePassword_TAG")
         }
+
+        changeData.setOnClickListener {
+            changeDataBottomDialog.show(supportFragmentManager,"ChangeData_TAG")
+        }
+
+
 
 
     }
@@ -92,7 +95,6 @@ class ProfileSettingsActivity : AppCompatActivity() {
 
     fun initAll(){
         goBack = findViewById(R.id.goBackIV)
-        profileChange = findViewById(R.id.profileChangeIV)
 
         //Main page
         userImage = findViewById(R.id.profileSetUserImageIV)
@@ -101,6 +103,7 @@ class ProfileSettingsActivity : AppCompatActivity() {
         userEmail = findViewById(R.id.profSettingsEmail)
 
         help = findViewById(R.id.helpTV)
+        changeData = findViewById(R.id.changeDataTV)
         changePassword = findViewById(R.id.changePasswordTV)
         aboutBooker = findViewById(R.id.aboutBookerTV)
         logOut = findViewById(R.id.logOutTV)

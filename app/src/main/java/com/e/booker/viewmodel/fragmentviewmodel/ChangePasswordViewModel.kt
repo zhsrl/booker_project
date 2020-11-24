@@ -5,18 +5,15 @@ import android.content.Intent
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.e.booker.view.ui.activities.auth.LoginAcitivity
-import com.e.booker.view.ui.activities.home.ProfileChangeActivity
-import com.e.booker.view.ui.fragments.bottomsheet.ChangePasswordBottomSheet
-import com.e.booker.viewmodel.ViewModelProviderFactory
+import com.e.booker.view.ui.activities.home.ProfileSettingsActivity
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
 class ChangePasswordViewModel(val context: Context): ViewModel() {
 
-    private var activity = ProfileChangeActivity()
+    private var activity = ProfileSettingsActivity()
     val mAuth = FirebaseAuth.getInstance()
 
 

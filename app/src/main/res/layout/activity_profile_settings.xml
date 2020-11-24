@@ -29,23 +29,13 @@
             android:id="@+id/toolbarTitleTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="30dp"
             android:fontFamily="@font/robotomed"
             android:text="Профиль"
             android:textColor="#000"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/goBackIV"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/profileChangeIV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_change"
-            android:layout_marginRight="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -166,6 +156,17 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/robotolight"
             android:text="Көмек"
+            android:textColor="@color/mainColor"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/changeDataTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/robotolight"
+            android:text="Деректер өзгерту"
+            android:layout_marginTop="15dp"
             android:textColor="@color/mainColor"
             android:textSize="18sp"
             />

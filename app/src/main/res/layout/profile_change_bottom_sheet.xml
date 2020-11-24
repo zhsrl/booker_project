@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="450dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/robotomed"
+            android:text="Деректерді жаңарту"
+            android:textColor="#000"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="30dp"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/bsh_profChangeUserImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/user"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/bsh_chooseUserImageIV"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_camera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/bsh_profChangeNameET"
+            android:layout_width="320dp"
+            android:layout_height="45dp"
+            android:background="@drawable/edittext_background"
+            android:hint="Атыңыз"
+            android:layout_marginTop="15dp"
+            android:inputType="textPersonName"
+            android:paddingStart="20dp"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bsh_profChangeUserImage" />
+
+        <EditText
+            android:id="@+id/bsh_profChangeSurnameET"
+            android:layout_width="320dp"
+            android:layout_height="45dp"
+            android:background="@drawable/edittext_background"
+            android:hint="Тегіңіз"
+            android:layout_marginTop="15dp"
+            android:inputType="textPersonName"
+            android:paddingStart="20dp"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bsh_profChangeNameET" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bsh_updateDataBTN"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#1433FF"
+            android:text="Жаңарту"
+            android:textAllCaps="false"
+            app:cornerRadius="20dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bsh_profChangeSurnameET" />
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
