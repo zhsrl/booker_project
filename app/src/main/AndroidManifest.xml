@@ -19,7 +19,7 @@
         <activity android:name=".view.ui.activities.home.ProfileChangeActivity"></activity>
         <activity android:name=".view.ui.activities.home.ProfileSettingsActivity" />
         <activity android:name=".view.ui.activities.TestActivity" />
-        <activity android:name=".view.ui.activities.adminpanel.AdminPanelActivity" />
+        <activity android:name=".view.ui.activities.adminpanel.ManagePanelActivity" />
         <activity android:name=".view.ui.activities.home.HomeActivity" />
         <activity android:name=".view.ui.activities.auth.LoginAcitivity">
             <intent-filter>

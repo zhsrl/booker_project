@@ -18,7 +18,6 @@ class HomeFragment : Fragment() {
         fun newInstance() = HomeFragment()
     }
 
-    private lateinit var logOut: Button
     private lateinit var viewModel: HomeViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -35,14 +34,6 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         // TODO: Use the ViewModel
 
-        logOut = view!!.findViewById(R.id.logOutBTN)
-
-        logOut.setOnClickListener{
-            FirebaseAuth.getInstance().signOut()
-            val intent = Intent(context, LoginAcitivity::class.java)
-            startActivity(intent)
-            activity?.finish()
-        }
 
 
 
@@ -51,27 +42,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         val getInf: MenuInflater = activity!!.menuInflater
-
         getInf.inflate(R.menu.toolbar_menu, menu)
-
-//        val profileMenuItem: MenuItem? = menu.findItem(R.id.profileITEM)
-//        val view: View = MenuItemCompat.getActionView(profileMenuItem)
-//
-//        val profileImage: CircleImageView = view.findViewById(R.id.profileIMG)
-//
-//        Glide.with(context!!)
-//                .load(R.drawable.user)
-//                .into(profileImage)
-
-//        profileImage.setOnClickListener{
-//            val profSettings = ProfileSettingsFragment()
-//            val transaction = fragmentManager!!.beginTransaction()
-//            transaction.replace(R.id.fragmentContainer, profSettings)
-//            transaction.addToBackStack(null)
-//            transaction.commit()
-//        }
-
-
         super.onCreateOptionsMenu(menu, inflater)
     }
 

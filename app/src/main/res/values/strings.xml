@@ -2,4 +2,15 @@
     <string name="app_name">Booker</string>
     <string name="testEmailString">test@test.com</string>
     <string name="aboutBookerText">Booker - бұл сіздің кітап оқуға деген құлшынысыңыз арттыруға арналған қосымша. Әр күн сайын белгілі бір уақыт қою арқылы кітап оқу скилл, яғни деңгейіңізді көтере аласыз.</string>
+    <string name="isLoading">Жүктелуде...</string>
+    
+    <string-array name="choise_items">
+        <item>Религия</item>
+        <item>Психология</item>
+        <item>Про бизнес</item>
+        <item>История</item>
+        <item>Литература</item>
+        <item>Научный</item>
+        <item>Мотивационный</item>
+    </string-array>
 </resources>

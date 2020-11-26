@@ -9,10 +9,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.e.booker.R
 import com.e.booker.utils.Pager
 import com.e.booker.view.ui.fragments.*
+import com.e.booker.viewmodel.ViewModelProviderFactory
+import com.e.booker.viewmodel.activityviewmodel.HomeViewModel
 import com.e.progress.ViewPageAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import de.hdodenhof.circleimageview.CircleImageView
@@ -32,21 +35,25 @@ class HomeActivity : AppCompatActivity() {
     var readingFragment = ReadingFragment()
     var audioBookFragment = AudioBookFragment()
     var bookFragment = BookFragment()
-
-
     var fragmentList: MutableList<Fragment> = ArrayList()
+
+    private lateinit var homeViewModel: HomeViewModel
 
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        val providerFactory = ViewModelProviderFactory(this)
+        homeViewModel = ViewModelProvider(this, providerFactory).get(HomeViewModel::class.java)
+
         init()
+
+        homeViewModel.showImage(profileImage)
 
         bottomNavBar = findViewById(R.id.bottom_nav_bar)
 
         fragmentList.add(homeFragment)
-
         fragmentList.add(readingFragment)
         fragmentList.add(audioBookFragment)
         fragmentList.add(bookFragment)

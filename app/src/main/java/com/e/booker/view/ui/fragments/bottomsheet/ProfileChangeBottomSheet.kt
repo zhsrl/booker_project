@@ -6,7 +6,6 @@ import android.content.ContentResolver
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,7 +39,7 @@ class ProfileChangeBottomSheet: BottomSheetDialogFragment() {
 
     val currentUser = FirebaseAuth.getInstance().currentUser!!.uid
 
-    private lateinit var imgURI: Uri
+    private var imgURI: Uri? = null
 
     val IMG_REQUEST_CODE = 2
 
@@ -80,6 +79,7 @@ class ProfileChangeBottomSheet: BottomSheetDialogFragment() {
             profileChangeViewModel.changeData(editName, editSurname)
             uploadImage()
 
+
         }
     }
 
@@ -88,6 +88,7 @@ class ProfileChangeBottomSheet: BottomSheetDialogFragment() {
         if(requestCode == IMG_REQUEST_CODE && resultCode == Activity.RESULT_OK){
             imgURI = data?.data!!
         }
+
 
     }
 
@@ -119,22 +120,34 @@ class ProfileChangeBottomSheet: BottomSheetDialogFragment() {
                 .getInstance()
                 .getReference("Users")
 
-        val sUserRef = userImageStorageReference.child(currentUser + "." + getFileExtension(imgURI))
 
-        sUserRef.putFile(imgURI)
-                .addOnSuccessListener(object : OnSuccessListener<UploadTask.TaskSnapshot> {
-                    override fun onSuccess(p0: UploadTask.TaskSnapshot?) {
-                        Toast.makeText(context, "Upload Image success!", Toast.LENGTH_SHORT).show()
-                        sUserRef.downloadUrl.addOnSuccessListener(object : OnSuccessListener<Uri> {
-                            override fun onSuccess(p0: Uri?) {
 
-                                val imageURL = p0.toString()
+        if(true){
+            val sUserRef = userImageStorageReference.child(currentUser + "." + imgURI?.let { getFileExtension(it) })
 
-                                userImageDatabaseReference.setValue(imageURL)
+            imgURI?.let {
+                sUserRef.putFile(it)
+                        .addOnSuccessListener(object : OnSuccessListener<UploadTask.TaskSnapshot> {
+                            override fun onSuccess(p0: UploadTask.TaskSnapshot?) {
+                                Toast.makeText(context?.applicationContext, "Upload Image success!", Toast.LENGTH_SHORT).show()
+                                sUserRef.downloadUrl.addOnSuccessListener(object : OnSuccessListener<Uri> {
+                                    override fun onSuccess(p0: Uri?) {
+
+                                        val imageURL = p0.toString()
+
+                                        userImageDatabaseReference.setValue(imageURL)
+                                    }
+                                })
                             }
-                        })
-                    }
-                })
+
+                        }).addOnFailureListener{
+                            Toast.makeText(context, "Upload Error!", Toast.LENGTH_SHORT).show()
+                        }
+            }
+
+        }else{
+            Toast.makeText(context?.applicationContext, "URI is null", Toast.LENGTH_SHORT).show()
+        }
 
 
     }

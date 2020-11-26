@@ -6,7 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.e.booker.view.ui.activities.adminpanel.AdminPanelActivity
+import com.e.booker.view.ui.activities.adminpanel.ManagePanelActivity
 import com.e.booker.view.ui.activities.home.HomeActivity
 import com.e.booker.view.ui.activities.auth.LoginAcitivity
 import com.google.android.gms.tasks.OnCompleteListener
@@ -69,7 +69,7 @@ class LoginViewModel(var context: Context): ViewModel() {
         if(user != null){
             Log.e("TAG","ADMIN PANEL ACTIVATED!")
             Toast.makeText(context, "ADMIN PANEL ACTIVATED!", Toast.LENGTH_SHORT).show()
-            val intent = Intent(context, AdminPanelActivity::class.java)
+            val intent = Intent(context, ManagePanelActivity::class.java)
             context.startActivity(intent)
             activity.finish()
         }else{

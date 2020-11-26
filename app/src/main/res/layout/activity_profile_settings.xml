@@ -73,9 +73,9 @@
             <TextView
                 android:id="@+id/profSettingsName"
                 android:layout_width="wrap_content"
+                android:hint="@string/isLoading"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/robotomed"
-                android:hint="name"
                 android:textColor="#000"
                 android:textSize="20sp" />
 
@@ -84,8 +84,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:hint="@string/isLoading"
                 android:fontFamily="@font/robotomed"
-                android:hint="surname"
                 android:textColor="#000"
                 android:textSize="20sp" />
 
@@ -124,7 +124,7 @@
         android:fontFamily="@font/robotolight"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
-        android:hint="@string/testEmailString"
+        android:hint="@string/isLoading"
         android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -144,6 +144,7 @@
         app:layout_constraintTop_toBottomOf="@+id/profSettingsEmail" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -157,56 +158,61 @@
             android:fontFamily="@font/robotolight"
             android:text="Көмек"
             android:textColor="@color/mainColor"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/changeDataTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:fontFamily="@font/robotolight"
             android:text="Деректер өзгерту"
-            android:layout_marginTop="15dp"
             android:textColor="@color/mainColor"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
 
 
         <TextView
             android:id="@+id/changePasswordTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:fontFamily="@font/robotolight"
             android:text="Құпия сөзді өзгерту"
-            android:layout_marginTop="15dp"
             android:textColor="@color/mainColor"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/aboutBookerTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:fontFamily="@font/robotolight"
             android:text="Booker туралы"
-            android:layout_marginTop="15dp"
             android:textColor="@color/mainColor"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/logOutTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:fontFamily="@font/robotolight"
             android:text="Шығу"
-            android:layout_marginTop="15dp"
             android:textColor="@color/red"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
 
 
     </LinearLayout>
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 

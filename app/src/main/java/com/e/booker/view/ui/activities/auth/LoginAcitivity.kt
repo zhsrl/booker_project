@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
 import com.e.booker.R
-import com.e.booker.view.ui.activities.adminpanel.AdminPanelActivity
+import com.e.booker.view.ui.activities.adminpanel.ManagePanelActivity
 import com.e.booker.view.ui.activities.home.HomeActivity
 import com.e.booker.viewmodel.activityviewmodel.LoginViewModel
 import com.e.booker.viewmodel.ViewModelProviderFactory
@@ -102,7 +102,7 @@ class LoginAcitivity : AppCompatActivity() {
         if(user != null){
             Log.e("HAPPY_ADMIN_PANEL","ADMIN PANEL ACTIVATED!")
             Toast.makeText(applicationContext, "ADMIN PANEL ACTIVATED!", Toast.LENGTH_SHORT).show()
-            val intent = Intent(applicationContext, AdminPanelActivity::class.java)
+            val intent = Intent(applicationContext, ManagePanelActivity::class.java)
             startActivity(intent)
             finish()
         }else{
