@@ -13,7 +13,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.e.booker.R
 import com.e.booker.utils.Pager
-import com.e.booker.view.ui.fragments.*
+import com.e.booker.view.ui.fragments.mainFragment.AudioBookFragment
+import com.e.booker.view.ui.fragments.mainFragment.BookFragment
+import com.e.booker.view.ui.fragments.mainFragment.HomeFragment
+import com.e.booker.view.ui.fragments.mainFragment.ReadingFragment
 import com.e.booker.viewmodel.ViewModelProviderFactory
 import com.e.booker.viewmodel.activityviewmodel.HomeViewModel
 import com.e.progress.ViewPageAdapter

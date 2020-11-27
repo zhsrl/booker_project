@@ -88,23 +88,29 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <CheckBox
-        android:id="@+id/audioCheckBox"
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/book_formatBTN"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
-        android:text="Audio Book"
+        android:text="Book Format"
+        android:textAllCaps="false"
+        android:backgroundTint="#FFD600"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addFileLAY" />
 
-    <CheckBox
-        android:id="@+id/pdfCheckBox"
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/book_genreBTN"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="60dp"
-        android:text="PDF Book"
+        android:layout_marginEnd="40dp"
+        android:text="Book Genre"
+        android:backgroundTint="#00BFA5"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addFileLAY" />
 
@@ -119,7 +125,7 @@
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/audioCheckBox" />
+        app:layout_constraintTop_toBottomOf="@+id/book_formatBTN" />
 
     <EditText
         android:id="@+id/manage_authorET"
@@ -160,6 +166,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/manage_descriptionET" />
+
+
 
 
 

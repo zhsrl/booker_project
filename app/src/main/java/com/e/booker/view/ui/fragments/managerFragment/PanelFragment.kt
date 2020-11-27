@@ -14,12 +14,14 @@ import android.webkit.MimeTypeMap
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.e.booker.R
+import com.e.booker.view.ui.fragments.multichoiseFragment.GenreMultiChoiseDialogFragment
 import com.e.booker.viewmodel.manageFragmentViewModel.PanelViewModel
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
-class PanelFragment : Fragment() {
+class PanelFragment : Fragment(), GenreMultiChoiseDialogFragment.OnMultiChoiseListener {
 
     var PDF_REQUEST_CODE = 1
     var IMG_REQUEST_CODE = 2
@@ -42,8 +44,8 @@ class PanelFragment : Fragment() {
     private lateinit var bookImage: ImageView
     private lateinit var imagePath: TextView
     private lateinit var filePath: TextView
-    private lateinit var audioCheck: CheckBox
-    private lateinit var pdfCheck: CheckBox
+    private lateinit var bookFormat: MaterialButton
+    private lateinit var bookGenre: MaterialButton
     private lateinit var addBook: Button
 
     private lateinit var viewModel: PanelViewModel
@@ -59,16 +61,10 @@ class PanelFragment : Fragment() {
 
         init()
 
-        addImage.setOnClickListener{
-            if(audioCheck.isChecked && pdfCheck.isChecked){
-                Toast.makeText(context!!.applicationContext, "Choose only one checkbox!", Toast.LENGTH_SHORT).show()
-           }else if(audioCheck.isChecked){
-                Toast.makeText(context!!.applicationContext, "Audio Books", Toast.LENGTH_SHORT).show()
-           }else if(pdfCheck.isChecked){
-                Toast.makeText(context!!.applicationContext, "PDF Books", Toast.LENGTH_SHORT).show()
-           }else{
-                Toast.makeText(context!!.applicationContext, "Choose one checkbox!", Toast.LENGTH_SHORT).show()
-            }
+        bookGenre.setOnClickListener {
+            val genreDialog = GenreMultiChoiseDialogFragment()
+            genreDialog.isCancelable = false
+            fragmentManager?.let { it1 -> genreDialog.show(it1, "Select Genre") }
         }
 
 
@@ -92,6 +88,14 @@ class PanelFragment : Fragment() {
         return mimeTypeMap.getExtensionFromMimeType(contResolver.getType(uri))
     }
 
+    override fun positiveButtonPressed(list: Array<String>, selectedItem: ArrayList<String>) {
+        Toast.makeText(context!!.applicationContext, "POS", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun negativeButtonPressed() {
+        Toast.makeText(context!!.applicationContext, "NEG", Toast.LENGTH_SHORT).show()
+    }
+
 
 
     private fun init(){
@@ -102,8 +106,8 @@ class PanelFragment : Fragment() {
         addFile = view!!.findViewById(R.id.addFileLAY)
         filePath = view!!.findViewById(R.id.manage_file_dir_pathTV)
 
-        audioCheck = view!!.findViewById(R.id.audioCheckBox)
-        pdfCheck = view!!.findViewById(R.id.pdfCheckBox)
+        bookFormat = view!!.findViewById(R.id.book_formatBTN)
+        bookGenre = view!!.findViewById(R.id.book_genreBTN)
 
         addBook = view!!.findViewById(R.id.addBookBTN)
 

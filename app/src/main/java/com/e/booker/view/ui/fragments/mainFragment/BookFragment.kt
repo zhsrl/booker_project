@@ -1,4 +1,4 @@
-package com.e.booker.view.ui.fragments
+package com.e.booker.view.ui.fragments.mainFragment
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,26 +7,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.e.booker.R
-import com.e.booker.viewmodel.fragmentviewmodel.ReadingViewModel
+import com.e.booker.viewmodel.fragmentviewmodel.BookViewModel
 
-class ReadingFragment : Fragment() {
+class BookFragment : Fragment() {
 
     companion object {
-        fun newInstance() = ReadingFragment()
+        fun newInstance() = BookFragment()
     }
 
-    private lateinit var viewModel: ReadingViewModel
+    private lateinit var viewModel: BookViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.reading_fragment, container, false)
+        return inflater.inflate(R.layout.book_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ReadingViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(BookViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

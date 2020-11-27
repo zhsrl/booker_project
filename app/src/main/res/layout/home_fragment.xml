@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="15dp"
     android:paddingRight="15dp"
-    tools:context=".view.ui.fragments.HomeFragment">
+    tools:context=".view.ui.fragments.mainFragment.HomeFragment">
 
     <!--    <View-->
     <!--        android:layout_width="match_parent"-->

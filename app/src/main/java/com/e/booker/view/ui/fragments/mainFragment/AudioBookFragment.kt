@@ -1,4 +1,4 @@
-package com.e.booker.view.ui.fragments
+package com.e.booker.view.ui.fragments.mainFragment
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle

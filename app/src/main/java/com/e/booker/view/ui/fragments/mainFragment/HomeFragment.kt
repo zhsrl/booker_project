@@ -1,16 +1,12 @@
-package com.e.booker.view.ui.fragments
+package com.e.booker.view.ui.fragments.mainFragment
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.widget.Button
 import com.e.booker.R
-import com.e.booker.view.ui.activities.auth.LoginAcitivity
 import com.e.booker.viewmodel.fragmentviewmodel.HomeViewModel
-import com.google.firebase.auth.FirebaseAuth
 
 class HomeFragment : Fragment() {
 

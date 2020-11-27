@@ -6,10 +6,6 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.e.booker.R
 import com.e.booker.utils.Pager
-import com.e.booker.view.ui.fragments.AudioBookFragment
-import com.e.booker.view.ui.fragments.BookFragment
-import com.e.booker.view.ui.fragments.HomeFragment
-import com.e.booker.view.ui.fragments.ReadingFragment
 import com.e.booker.view.ui.fragments.managerFragment.PanelFragment
 import com.e.booker.view.ui.fragments.managerFragment.ShowFragment
 import com.e.progress.ViewPageAdapter
