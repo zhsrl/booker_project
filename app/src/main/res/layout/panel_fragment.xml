@@ -35,9 +35,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
+            android:fontFamily="@font/robotolight"
             android:text="D://Users/Desktop/Books"
             android:textColor="@color/white"
-            android:fontFamily="@font/robotolight"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -94,9 +94,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
+        android:backgroundTint="#FFD600"
+        android:entries="@array/format_book"
         android:text="Book Format"
         android:textAllCaps="false"
-        android:backgroundTint="#FFD600"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addFileLAY" />
@@ -107,8 +108,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
-        android:text="Book Genre"
         android:backgroundTint="#00BFA5"
+        android:text="Book Genre"
         android:textAllCaps="false"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -144,12 +145,12 @@
         android:id="@+id/manage_descriptionET"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:paddingLeft="15dp"
-        android:gravity="start"
-        android:paddingTop="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/edittext_background"
+        android:gravity="start"
         android:hint="Description"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
         android:singleLine="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -167,9 +168,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/manage_descriptionET" />
 
+    <Spinner
+        android:id="@+id/testSpinner"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/format_book"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addBookBTN" />
 
-
-
+    <Spinner
+        android:id="@+id/test2Spinner"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/genre_items"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addBookBTN" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

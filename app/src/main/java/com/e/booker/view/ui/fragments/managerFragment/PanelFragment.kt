@@ -1,7 +1,10 @@
 package com.e.booker.view.ui.fragments.managerFragment
 
+import android.annotation.SuppressLint
 import android.app.Activity.RESULT_OK
+import android.app.AlertDialog
 import android.content.ContentResolver
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
@@ -21,11 +24,11 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
-class PanelFragment : Fragment(), GenreMultiChoiseDialogFragment.OnMultiChoiseListener {
+class PanelFragment : Fragment(), GenreMultiChoiseDialogFragment.OnMultiChoiseListener, AdapterView.OnItemSelectedListener {
 
-    var PDF_REQUEST_CODE = 1
-    var IMG_REQUEST_CODE = 2
-    var AUDIO_REQUEST_CODE = 3
+    var PDF_REQUEST_CODE = 101
+    var IMG_REQUEST_CODE = 202
+    var AUDIO_REQUEST_CODE = 303
 
     private lateinit var storageReference: StorageReference
     private lateinit var databaseReference: DatabaseReference
@@ -47,6 +50,8 @@ class PanelFragment : Fragment(), GenreMultiChoiseDialogFragment.OnMultiChoiseLi
     private lateinit var bookFormat: MaterialButton
     private lateinit var bookGenre: MaterialButton
     private lateinit var addBook: Button
+    private lateinit var spinner: Spinner
+    private lateinit var spinner2: Spinner
 
     private lateinit var viewModel: PanelViewModel
 
@@ -62,10 +67,40 @@ class PanelFragment : Fragment(), GenreMultiChoiseDialogFragment.OnMultiChoiseLi
         init()
 
         bookGenre.setOnClickListener {
-            val genreDialog = GenreMultiChoiseDialogFragment()
-            genreDialog.isCancelable = false
-            fragmentManager?.let { it1 -> genreDialog.show(it1, "Select Genre") }
+//            val genreDialog = GenreMultiChoiseDialogFragment()
+//            genreDialog.isCancelable = false
+//            fragmentManager?.let { it1 -> genreDialog.show(it1, "Select Genre") }
+            val list: Array<String>
+            list = resources.getStringArray(R.array.genre_items)
+            val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
+            builder.setTitle("Select genre")
+
+            builder.setSingleChoiceItems(list, -1) { dialog, which ->
+                Toast.makeText(context!!.applicationContext, list[which], Toast.LENGTH_SHORT).show()
+            }
+            builder.setNeutralButton("Cancel",){ dialog, which ->
+                dialog.dismiss()
+            }
+            builder.setPositiveButton("OK", object: DialogInterface.OnClickListener{
+                override fun onClick(dialog: DialogInterface?, which: Int) {
+                    dialog!!.dismiss()
+                }
+            })
+            val alertDialog = builder.create()
+
+            alertDialog.setOnShowListener(object: DialogInterface.OnShowListener{
+                @SuppressLint("ResourceAsColor")
+                override fun onShow(dialog: DialogInterface?) {
+                    alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(R.color.mainColor)
+                    alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(R.color.mainColor)
+                }
+            })
+
+            alertDialog.show()
         }
+
+        spinner.onItemSelectedListener = this
+        spinner2.onItemSelectedListener = this
 
 
     }
@@ -110,7 +145,22 @@ class PanelFragment : Fragment(), GenreMultiChoiseDialogFragment.OnMultiChoiseLi
         bookGenre = view!!.findViewById(R.id.book_genreBTN)
 
         addBook = view!!.findViewById(R.id.addBookBTN)
+        spinner = view!!.findViewById(R.id.testSpinner)
+        spinner2 = view!!.findViewById(R.id.test2Spinner)
 
+    }
+
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        if(parent!!.selectedItem == "Audio Book"){
+            Toast.makeText(context!!.applicationContext, "This is audio Rel file", Toast.LENGTH_SHORT).show()
+        }else if(parent.selectedItem == "PDF Book"){
+            Toast.makeText(context!!.applicationContext, "This is pdf file.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        TODO("Not yet implemented")
     }
 
 }

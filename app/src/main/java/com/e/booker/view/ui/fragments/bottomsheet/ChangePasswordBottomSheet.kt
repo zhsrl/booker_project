@@ -62,8 +62,7 @@ class ChangePasswordBottomSheet: BottomSheetDialogFragment() {
 
     }
 
-
-
+    
     private fun init(){
         userCurrentPassword = view!!.findViewById(R.id.bsh_currentPasswordET)
         userNewPassword = view!!.findViewById(R.id.bsh_newPasswordET)

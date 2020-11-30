@@ -4,7 +4,7 @@
     <string name="aboutBookerText">Booker - бұл сіздің кітап оқуға деген құлшынысыңыз арттыруға арналған қосымша. Әр күн сайын белгілі бір уақыт қою арқылы кітап оқу скилл, яғни деңгейіңізді көтере аласыз.</string>
     <string name="isLoading">Жүктелуде...</string>
     
-    <string-array name="choise_items">
+    <string-array name="genre_items">
         <item>Религия</item>
         <item>Психология</item>
         <item>Про бизнес</item>
@@ -12,5 +12,10 @@
         <item>Литература</item>
         <item>Научный</item>
         <item>Мотивационный</item>
+    </string-array>
+
+    <string-array name="format_book">
+        <item>Audio Book</item>
+        <item>PDF Book</item>
     </string-array>
 </resources>

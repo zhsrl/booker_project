@@ -1,5 +1,6 @@
 package com.e.booker.view.ui.fragments.multichoiseFragment
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
@@ -17,7 +18,7 @@ class GenreMultiChoiseDialogFragment: DialogFragment() {
         fun negativeButtonPressed()
     }
 
-    var mListener: OnMultiChoiseListener? = null
+    lateinit var mListener: OnMultiChoiseListener
 
     private var selectedList: ArrayList<String> = ArrayList()
 
@@ -31,10 +32,9 @@ class GenreMultiChoiseDialogFragment: DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        var alertBuilder: AlertDialog.Builder = AlertDialog.Builder(activity, R.style.AlertDialogTheme)
-
+        var alertBuilder: androidx.appcompat.app.AlertDialog.Builder = androidx.appcompat.app.AlertDialog.Builder(context!!, R.style.AlertDialogTheme)
         var list: Array<String>
-        list = activity?.resources!!.getStringArray(R.array.choise_items)
+        list = context!!.resources.getStringArray(R.array.genre_items)
 
         alertBuilder.setTitle("Choise book format")
                 .setMultiChoiceItems(list, null) {
@@ -47,13 +47,15 @@ class GenreMultiChoiseDialogFragment: DialogFragment() {
                     }
 
                 }.setPositiveButton("Ok", object: DialogInterface.OnClickListener{
+                    @SuppressLint("WrongConstant")
                     override fun onClick(dialog: DialogInterface?, which: Int) {
-                        mListener?.positiveButtonPressed(list, selectedList)
+                        mListener.positiveButtonPressed(list, selectedList)
+                        setStyle(R.style.AlertDialogTheme, theme)
                     }
 
                 }).setNegativeButton("Cancel", object: DialogInterface.OnClickListener{
                     override fun onClick(dialog: DialogInterface?, which: Int) {
-                        mListener?.negativeButtonPressed()
+                        mListener.negativeButtonPressed()
                     }
 
                 })
