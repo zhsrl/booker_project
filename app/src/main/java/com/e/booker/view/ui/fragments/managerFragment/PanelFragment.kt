@@ -16,31 +16,22 @@ import android.view.ViewGroup
 import android.webkit.MimeTypeMap
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.ActivityCompat
 import com.e.booker.R
 import com.e.booker.view.ui.fragments.multichoiseFragment.GenreMultiChoiseDialogFragment
+import com.e.booker.viewmodel.ViewModelProviderFactory
 import com.e.booker.viewmodel.manageFragmentViewModel.PanelViewModel
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import org.w3c.dom.Text
 
-class PanelFragment : Fragment(), GenreMultiChoiseDialogFragment.OnMultiChoiseListener, AdapterView.OnItemSelectedListener {
+class PanelFragment : Fragment(){
 
     var PDF_REQUEST_CODE = 101
     var IMG_REQUEST_CODE = 202
     var AUDIO_REQUEST_CODE = 303
-
-    private lateinit var storageReference: StorageReference
-    private lateinit var databaseReference: DatabaseReference
-
-    private lateinit var pdfURI: Uri
-    private lateinit var imgURI: Uri
-    private lateinit var audioURI: Uri
-
-
-    companion object {
-        fun newInstance() = PanelFragment()
-    }
 
     private lateinit var addImage: ConstraintLayout
     private lateinit var addFile: ConstraintLayout
@@ -50,9 +41,13 @@ class PanelFragment : Fragment(), GenreMultiChoiseDialogFragment.OnMultiChoiseLi
     private lateinit var bookFormat: MaterialButton
     private lateinit var bookGenre: MaterialButton
     private lateinit var addBook: Button
-    private lateinit var spinner: Spinner
-    private lateinit var spinner2: Spinner
 
+    private lateinit var fileTitle: EditText
+    private lateinit var fileAuthor: EditText
+    private lateinit var fileDescription: EditText
+
+    private lateinit var formatFile: TextView
+    private lateinit var genreFile: TextView
     private lateinit var viewModel: PanelViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -60,78 +55,123 @@ class PanelFragment : Fragment(), GenreMultiChoiseDialogFragment.OnMultiChoiseLi
         return inflater.inflate(R.layout.panel_fragment, container, false)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(PanelViewModel::class.java)
+        val providerFactory = ViewModelProviderFactory(this.context!!)
+        viewModel = ViewModelProvider(this, providerFactory).get(PanelViewModel::class.java)
 
         init()
 
-        bookGenre.setOnClickListener {
-//            val genreDialog = GenreMultiChoiseDialogFragment()
-//            genreDialog.isCancelable = false
-//            fragmentManager?.let { it1 -> genreDialog.show(it1, "Select Genre") }
+        bookFormat.setOnClickListener {
             val list: Array<String>
-            list = resources.getStringArray(R.array.genre_items)
+            list = resources.getStringArray(R.array.format_items)
             val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
-            builder.setTitle("Select genre")
+            builder.setTitle("Select format")
 
-            builder.setSingleChoiceItems(list, -1) { dialog, which ->
-                Toast.makeText(context!!.applicationContext, list[which], Toast.LENGTH_SHORT).show()
-            }
-            builder.setNeutralButton("Cancel",){ dialog, which ->
+            builder.setSingleChoiceItems(list, -1){dialog, which ->
+                if(list[which] == "Audio Book"){
+                    Toast.makeText(context!!.applicationContext, "AUDIO", Toast.LENGTH_SHORT).show()
+                    formatFile.text = "Audio Book"
+                }else if(list[which] == "PDF Book"){
+                    Toast.makeText(context!!.applicationContext, "PDF", Toast.LENGTH_SHORT).show()
+                    formatFile.text = "PDF Book"
+                }
                 dialog.dismiss()
             }
-            builder.setPositiveButton("OK", object: DialogInterface.OnClickListener{
-                override fun onClick(dialog: DialogInterface?, which: Int) {
-                    dialog!!.dismiss()
-                }
-            })
+
             val alertDialog = builder.create()
 
             alertDialog.setOnShowListener(object: DialogInterface.OnShowListener{
                 @SuppressLint("ResourceAsColor")
                 override fun onShow(dialog: DialogInterface?) {
                     alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(R.color.mainColor)
-                    alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(R.color.mainColor)
                 }
             })
 
             alertDialog.show()
         }
 
-        spinner.onItemSelectedListener = this
-        spinner2.onItemSelectedListener = this
+        bookGenre.setOnClickListener {
+            val list: Array<String>
+            list = resources.getStringArray(R.array.genre_items)
+            val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
+            builder.setTitle("Select genre")
+
+            builder.setSingleChoiceItems(list, -1) { dialog, which ->
+                if (list[which] == "Religion"){
+                    Toast.makeText(context!!.applicationContext, "REL", Toast.LENGTH_SHORT).show()
+                    genreFile.text = "Religion"
+                }
+                else if (list[which] == "Psychology"){
+                    Toast.makeText(context!!.applicationContext, "REL", Toast.LENGTH_SHORT).show()
+                    genreFile.text = "Psychology"
+                }
+                else if (list[which] == "Business"){
+                    Toast.makeText(context!!.applicationContext, "REL", Toast.LENGTH_SHORT).show()
+                    genreFile.text = "Business"
+                }
+                else if (list[which] == "History"){
+                    Toast.makeText(context!!.applicationContext, "REL", Toast.LENGTH_SHORT).show()
+                    genreFile.text = "History"
+                }
+                else if (list[which] == "Literature"){
+                    Toast.makeText(context!!.applicationContext, "REL", Toast.LENGTH_SHORT).show()
+                    genreFile.text = "Literature"
+                }
+                else if (list[which] == "Science"){
+                    Toast.makeText(context!!.applicationContext, "REL", Toast.LENGTH_SHORT).show()
+                    genreFile.text = "Science"
+                }
+                else if (list[which] == "Motivation"){
+                    Toast.makeText(context!!.applicationContext, "MTV", Toast.LENGTH_SHORT).show()
+                    genreFile.text = "Motivation"
+                }
+
+                dialog.dismiss()
+            }
+            builder.setNeutralButton("Cancel",){ dialog, which ->
+                dialog.dismiss()
+            }
+
+            val alertDialog = builder.create()
+
+            alertDialog.setOnShowListener(object: DialogInterface.OnShowListener{
+                @SuppressLint("ResourceAsColor")
+                override fun onShow(dialog: DialogInterface?) {
+                    alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(R.color.mainColor)
+                }
+            })
+
+            alertDialog.show()
+        }
+
+        addImage.setOnClickListener{
+            val intent = Intent()
+            intent.setType("image/*")
+            intent.setAction(Intent.ACTION_GET_CONTENT)
+            startActivityForResult(Intent.createChooser(intent, "Select Image"), IMG_REQUEST_CODE)
+        }
+
+        addFile.setOnClickListener {
+            val intent = Intent()
+            intent.setType("application/pdf")
+            intent.setAction(Intent.ACTION_GET_CONTENT)
+            startActivityForResult(Intent.createChooser(intent, "Select Image"), PDF_REQUEST_CODE)
+        }
+
+        addBook.setOnClickListener{
+            viewModel.uploadData(formatFile, genreFile, fileTitle, fileAuthor, fileDescription)
+        }
 
 
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == PDF_REQUEST_CODE && resultCode == RESULT_OK){
-            pdfURI = data?.data!!
-        }else if(requestCode == IMG_REQUEST_CODE && resultCode == RESULT_OK){
-            imgURI = data?.data!!
-        }else if(requestCode == AUDIO_REQUEST_CODE && resultCode == RESULT_OK){
-            audioURI = data?.data!!
-        }
+        viewModel.initActivityResult(requestCode,resultCode,data, IMG_REQUEST_CODE, PDF_REQUEST_CODE, AUDIO_REQUEST_CODE)
+
     }
-
-    fun getFileExtension(uri: Uri): String? {
-        val contResolver: ContentResolver = context!!.contentResolver
-        val mimeTypeMap: MimeTypeMap = MimeTypeMap.getSingleton()
-
-        return mimeTypeMap.getExtensionFromMimeType(contResolver.getType(uri))
-    }
-
-    override fun positiveButtonPressed(list: Array<String>, selectedItem: ArrayList<String>) {
-        Toast.makeText(context!!.applicationContext, "POS", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun negativeButtonPressed() {
-        Toast.makeText(context!!.applicationContext, "NEG", Toast.LENGTH_SHORT).show()
-    }
-
-
 
     private fun init(){
         addImage = view!!.findViewById(R.id.addImageLAY)
@@ -145,22 +185,15 @@ class PanelFragment : Fragment(), GenreMultiChoiseDialogFragment.OnMultiChoiseLi
         bookGenre = view!!.findViewById(R.id.book_genreBTN)
 
         addBook = view!!.findViewById(R.id.addBookBTN)
-        spinner = view!!.findViewById(R.id.testSpinner)
-        spinner2 = view!!.findViewById(R.id.test2Spinner)
 
-    }
+        fileTitle = view!!.findViewById(R.id.manage_titelET)
+        fileAuthor = view!!.findViewById(R.id.manage_authorET)
+        fileDescription = view!!.findViewById(R.id.manage_descriptionET)
+
+        formatFile = view!!.findViewById(R.id.formatFileTV)
+        genreFile = view!!.findViewById(R.id.genreFileTV)
 
 
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        if(parent!!.selectedItem == "Audio Book"){
-            Toast.makeText(context!!.applicationContext, "This is audio Rel file", Toast.LENGTH_SHORT).show()
-        }else if(parent.selectedItem == "PDF Book"){
-            Toast.makeText(context!!.applicationContext, "This is pdf file.", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    override fun onNothingSelected(parent: AdapterView<*>?) {
-        TODO("Not yet implemented")
     }
 
 }
