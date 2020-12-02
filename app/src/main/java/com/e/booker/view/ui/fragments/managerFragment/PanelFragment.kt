@@ -1,37 +1,26 @@
 package com.e.booker.view.ui.fragments.managerFragment
 
 import android.annotation.SuppressLint
-import android.app.Activity.RESULT_OK
 import android.app.AlertDialog
-import android.content.ContentResolver
 import android.content.DialogInterface
 import android.content.Intent
-import android.net.Uri
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.MimeTypeMap
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.e.booker.R
-import com.e.booker.view.ui.fragments.multichoiseFragment.GenreMultiChoiseDialogFragment
 import com.e.booker.viewmodel.ViewModelProviderFactory
 import com.e.booker.viewmodel.manageFragmentViewModel.PanelViewModel
 import com.google.android.material.button.MaterialButton
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import org.w3c.dom.Text
 
 class PanelFragment : Fragment(){
 
-    var PDF_REQUEST_CODE = 101
-    var IMG_REQUEST_CODE = 202
-    var AUDIO_REQUEST_CODE = 303
+    var FILE_REQUEST_CODE = 1
+    var IMG_REQUEST_CODE = 2
 
     private lateinit var addImage: ConstraintLayout
     private lateinit var addFile: ConstraintLayout
@@ -69,7 +58,7 @@ class PanelFragment : Fragment(){
             val builder: AlertDialog.Builder = AlertDialog.Builder(this.context)
             builder.setTitle("Select format")
 
-            builder.setSingleChoiceItems(list, -1){dialog, which ->
+            builder.setSingleChoiceItems(list, -1){ dialog, which ->
                 if(list[which] == "Audio Book"){
                     Toast.makeText(context!!.applicationContext, "AUDIO", Toast.LENGTH_SHORT).show()
                     formatFile.text = "Audio Book"
@@ -82,7 +71,7 @@ class PanelFragment : Fragment(){
 
             val alertDialog = builder.create()
 
-            alertDialog.setOnShowListener(object: DialogInterface.OnShowListener{
+            alertDialog.setOnShowListener(object : DialogInterface.OnShowListener {
                 @SuppressLint("ResourceAsColor")
                 override fun onShow(dialog: DialogInterface?) {
                     alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(R.color.mainColor)
@@ -130,13 +119,13 @@ class PanelFragment : Fragment(){
 
                 dialog.dismiss()
             }
-            builder.setNeutralButton("Cancel",){ dialog, which ->
+            builder.setNeutralButton("Cancel"){ dialog, which ->
                 dialog.dismiss()
             }
 
             val alertDialog = builder.create()
 
-            alertDialog.setOnShowListener(object: DialogInterface.OnShowListener{
+            alertDialog.setOnShowListener(object : DialogInterface.OnShowListener {
                 @SuppressLint("ResourceAsColor")
                 override fun onShow(dialog: DialogInterface?) {
                     alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(R.color.mainColor)
@@ -155,9 +144,12 @@ class PanelFragment : Fragment(){
 
         addFile.setOnClickListener {
             val intent = Intent()
-            intent.setType("application/pdf")
-            intent.setAction(Intent.ACTION_GET_CONTENT)
-            startActivityForResult(Intent.createChooser(intent, "Select Image"), PDF_REQUEST_CODE)
+            intent.setAction(Intent.ACTION_OPEN_DOCUMENT)
+            intent.addCategory(Intent.CATEGORY_OPENABLE)
+            intent.setType("*/*")
+            val mimeTypes = arrayOf("application/pdf" , "audio/*")
+            intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
+            startActivityForResult(Intent.createChooser(intent, "Select Book"), FILE_REQUEST_CODE)
         }
 
         addBook.setOnClickListener{
@@ -169,7 +161,7 @@ class PanelFragment : Fragment(){
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        viewModel.initActivityResult(requestCode,resultCode,data, IMG_REQUEST_CODE, PDF_REQUEST_CODE, AUDIO_REQUEST_CODE)
+        viewModel.initActivityResult(requestCode, resultCode, data)
 
     }
 
